@@ -1,7 +1,6 @@
 package com.kit.movie.domain.seat;
 
-import com.kit.movie.domain.theater.Screen;
-import lombok.Generated;
+import com.kit.movie.domain.screen.Screen;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
