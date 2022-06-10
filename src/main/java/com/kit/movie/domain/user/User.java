@@ -31,6 +31,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Review> reviews = new ArrayList<>();
 
+
+
     @Builder
     public User(Long id, String name, String password, Role role){
         this.id= id;
