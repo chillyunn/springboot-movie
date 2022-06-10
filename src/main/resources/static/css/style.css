@@ -35,6 +35,7 @@ footer .company_info_wrap{
     background-color: #fff;
 }
 .header_content .contents h1{
+    margin: 0;
     display: inline-flex;
     align-items: flex-end;
     height: 53px;
@@ -96,8 +97,6 @@ input, select img{
     vertical-align: middle;
 }
 .nav{
-    margin-top: 50px;
-    float: left;
     position: absolute;
     left:0;
     top: 113px;
@@ -125,4 +124,7 @@ input, select img{
 }
 .nav_menu > li:first-child{
     width: 137px;
+}
+.memberInfo_wrap{
+    margin: 0;
 }
