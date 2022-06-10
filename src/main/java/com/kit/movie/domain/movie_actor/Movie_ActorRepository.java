@@ -1,4 +1,4 @@
-package com.kit.movie.domain.actor;
+package com.kit.movie.domain.movie_actor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

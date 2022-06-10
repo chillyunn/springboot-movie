@@ -1,5 +1,6 @@
 package com.kit.movie.domain.movie;
 
+import com.kit.movie.domain.movie_actor.Movie_Actor;
 import com.kit.movie.domain.review.Review;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,7 +44,11 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews = new ArrayList<>();
-    public List<Review> getReviews() { return reviews; }
-    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+    public void setReviews(Review review) {
+        this.reviews.add(review);
+    }
+
+    @OneToMany(mappedBy = "movie")
+    private List<Movie_Actor> movie_actors = new ArrayList<>();
 
 }

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MovieController {
     private final MovieService movieService;
 
-    @GetMapping("/movies")
-    public MovieResponseDto findById(@PathVariable Long id){
-        return movieService.findById(id);
-    }
+//    @GetMapping("/movies") //id로 영화 찾기 - 불필요해보임
+//    public MovieResponseDto findById(@PathVariable Long id){
+//        return movieService.findById(id);
+//    }
 
     @PostMapping("/movies/add")
     public Long save(MovieSaveRequestDto requestDto) { return movieService.save(requestDto); }
