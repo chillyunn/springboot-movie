@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
+@Entity
 public class Movie_Actor {//영화이름(FK), 배우이름(FK)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
