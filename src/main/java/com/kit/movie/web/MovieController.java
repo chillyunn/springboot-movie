@@ -1,6 +1,7 @@
 package com.kit.movie.web;
 
 import com.kit.movie.service.MovieService;
+import com.kit.movie.web.dto.MovieResponseDto;
 import com.kit.movie.web.dto.MovieSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
