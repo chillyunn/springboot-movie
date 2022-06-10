@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http:thymeleaf.org">
 <header th:fragment="headerFragment">
-    <div>
-        <div>
-            <a href="/">
-                <img src="images/logoRed.png" alt="CGV">
-            </a>
-            <span>CULTUREPLEX</span>
+    <div class="header">
+        <div class="header_content">
+            <div class="contents">
+                <h1>
+                    <a href="/">
+                        <img src="images/logoRed.png" alt="CGV">
+                    </a>
+                    <span>CULTUREPLEX</span>
+                </h1>
+                <ul class="memberInfo_wrap">
+                    <li>
+                        <a href="/user/login">
+                            <img src="images/loginPassword.png" alt="로그인">
+                            <span>로그인</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/join">
+                            <img src="images/loginJoin.png" alt="회원가입">
+                            <span>회원가입</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/mycgv">
+                            <img src="images/loginMember.png" alt="MY CGV">
+                            <span>MY CGV</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav" style="left: 0px">
+            <div class="contents">
+                <ul class="nav_menu">
+                    <li>
+                        <h2><a href="/movies">영화</a></h2>
+                    </li>
+                    <li>
+                        <h2>
+                            <a href="/timetables">상영시간표</a>
+                        </h2>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
