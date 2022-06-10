@@ -1,5 +1,6 @@
 package com.kit.movie.domain.screen;
 
+import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.seat.Seat;
 import com.kit.movie.domain.theater.Theater;
 import lombok.Getter;
@@ -20,10 +21,14 @@ public class Screen {
     @Column(nullable = false)
     private Integer floor;
 
-    @OneToMany(mappedBy = "screen")
-    List<Seat> seats = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "THEATER_ID")
     private Theater theater;
+
+
+    @OneToMany(mappedBy = "screen")
+    List<Seat> seats = new ArrayList<>();
+
+    @OneToMany(mappedBy = "screen")
+    List<Reservation> reservations = new ArrayList<>();
 }
