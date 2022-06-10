@@ -18,4 +18,8 @@ public class Movie_Actor {//영화이름(FK), 배우이름(FK)
     @JoinColumn(name = "MOVIE_ID")
     private Movie movie;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACTOR_ID")
+    private Actor actor;
+
 }
