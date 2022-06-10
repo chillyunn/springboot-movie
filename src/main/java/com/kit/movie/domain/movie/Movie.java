@@ -34,12 +34,16 @@ public class Movie {
     @Column(nullable = false)
     private String genre;
 
+    @Column(nullable = false)
+    private String imgUrl;
+
     @Builder
-    public Movie(String name, Date releaseDate, String director, String genre) {
+    public Movie(String name, Date releaseDate, String director, String genre, String imgUrl) {
         this.name = name;
         this.releaseDate = releaseDate;
         this.director = director;
         this.genre = genre;
+        this.imgUrl = imgUrl;
     }
 
     @OneToMany(mappedBy = "movie")
