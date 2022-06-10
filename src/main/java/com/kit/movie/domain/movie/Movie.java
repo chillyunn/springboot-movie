@@ -18,10 +18,10 @@ public class Movie {
     private String name;
 
     @Column(nullable = false)
-    private String reservationRate; //?
+    private Double reservationRate;
 
     @Column(nullable = false)
-    private Date releaseDate; // import util? sql?
+    private Date releaseDate;
 
     @Column(nullable = false)
     private String director;

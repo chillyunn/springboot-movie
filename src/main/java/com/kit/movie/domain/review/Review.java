@@ -22,7 +22,7 @@ public class Review {
     private String contents;
 
     @Column(nullable = false)
-    private Date postDate; //util? sql?
+    private Date postDate;
 
     @Column(nullable = false)
     private int likeCount;
