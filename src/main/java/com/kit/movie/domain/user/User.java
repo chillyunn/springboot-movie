@@ -24,13 +24,13 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-//    @Builder
-//    public User(Long id, String name, String password, Role role){
-//        this.id= id;
-//        this.name=name;
-//        this.password = password;
-//        this.role=role;
-//    }
+    @Builder
+    public User(Long id, String name, String password, Role role){
+        this.id= id;
+        this.name=name;
+        this.password = password;
+        this.role=role;
+    }
 //
 //
 //
