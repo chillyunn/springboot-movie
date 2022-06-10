@@ -18,7 +18,7 @@ public class Actor {
     private String name;
 
     @Column(nullable = false)
-    private Date birth; //util? sql?
+    private Date birth;
 
     @Column(nullable = false)
     private String country;
