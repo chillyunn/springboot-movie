@@ -1,5 +1,6 @@
 package com.kit.movie.domain.review;
 
+import com.kit.movie.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +27,10 @@ public class Review {
 
     @Column(nullable = false)
     private int likeCount;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
 //    @ManyToOne
 }
