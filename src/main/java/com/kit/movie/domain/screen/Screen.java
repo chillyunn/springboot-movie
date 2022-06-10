@@ -11,15 +11,19 @@ import java.util.List;
 @Getter
 @Entity
 public class Screen {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Integer floor;
+
     @OneToMany(mappedBy = "screen")
     List<Seat> seats = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "THEATER_ID")
     private Theater theater;
 }
