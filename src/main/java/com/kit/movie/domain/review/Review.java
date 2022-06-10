@@ -28,6 +28,9 @@ public class Review {
     @Column(nullable = false)
     private int likeCount;
 
+    @Column(nullable = false)
+    private boolean grade;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MOVIE_ID", nullable = false)
     private Movie movie;

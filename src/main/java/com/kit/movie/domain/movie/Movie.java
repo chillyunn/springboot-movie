@@ -22,7 +22,7 @@ public class Movie {
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = true)
     private Double reservationRate;
 
     @Column(nullable = false)
