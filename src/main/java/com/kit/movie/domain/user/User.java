@@ -1,5 +1,6 @@
 package com.kit.movie.domain.user;
 
+import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.review.Review;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +32,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Review> reviews = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "userResv")
+    List<Reservation> reservations = new ArrayList<>();
 
     @Builder
     public User(Long id, String name, String password, Role role){

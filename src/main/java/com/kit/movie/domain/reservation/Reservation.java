@@ -1,6 +1,7 @@
 package com.kit.movie.domain.reservation;
 
 import com.kit.movie.domain.screen.Screen;
+import com.kit.movie.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,9 @@ public class Reservation {
     @JoinColumn(name = "SCREEN_ID")
     private Screen screen;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User userResv;
 
 
 }
