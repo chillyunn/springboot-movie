@@ -6,9 +6,11 @@ import com.kit.movie.web.dto.UserLoginResponseDto;
 import com.kit.movie.web.dto.UserResponseDto;
 import com.kit.movie.web.dto.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -18,12 +20,18 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @PostMapping("/signup")
+    @GetMapping("user/join")
+    public String addMember(Model model){
+        model.addAttribute("member", new UserSaveRequestDto());
+        return "members/join-form.html";
+    }
+
+    @PostMapping("/user/join")
     public Long save(@RequestBody UserSaveRequestDto requestDto){
         return userService.save(requestDto);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public UserLoginResponseDto login(@RequestBody UserLoginRequestDto requestDto){
         return userService.login(requestDto);
     }
