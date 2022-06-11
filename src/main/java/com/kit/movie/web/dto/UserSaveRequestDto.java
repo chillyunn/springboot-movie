@@ -1,5 +1,6 @@
 package com.kit.movie.web.dto;
 
+import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
 import lombok.*;
 
@@ -12,6 +13,7 @@ public class UserSaveRequestDto {
     private String loginID;
     private String name;
     private String password;
+    private Role role;
 
 //    @Builder
 //    public UserSaveRequestDto(Long id, String name, String password){

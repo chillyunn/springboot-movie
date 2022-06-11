@@ -35,11 +35,7 @@ public class UserController {
         return "members/myInfo";
     }
 
-    @GetMapping("users/join")
-    public String createForm(Model model){
-        model.addAttribute("user", new UserSaveRequestDto());
-        return "members/join-form";
-    }
+
 
     @GetMapping("/")
     public String home(
@@ -54,6 +50,11 @@ public class UserController {
         return "index";
     }
 
+    @GetMapping("/users/join")
+    public String createForm(Model model){
+        model.addAttribute("user", new UserSaveRequestDto());
+        return "members/join-form";
+    }
 
     @PostMapping("/users/join")
     public String addMember(@ModelAttribute UserSaveRequestDto userSaveRequestDto){
