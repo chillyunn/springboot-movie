@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+
+</head>
+<body>
+<!--리뷰작성화면-->
+<section layout:fragment="content" class="main-content">
+    <h1>리뷰 등록</h1>
+    <form id="register-form" th:action="@{/items/new3}" th:object="${bookForm}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
+        </div>
+        <div class="form-row">
+            <label>리뷰: </label><input type="text" th:field="*{review}" autofocus="autofocus" placeholder="리뷰"
+                                      th:errorclass="field-error"/>
+            <div class="field-error" th:if="${#fields.hasErrors('review')}" th:errors="*{review}">
+                리뷰 오류
+            </div>
+        </div>
+
+        <div class="form-row">
+            <input type="submit" value="리뷰등록"/>
+            <input type="reset" value="다시입력"/>
+        </div>
+    </form>
+</section>
+</body>
+</html>
