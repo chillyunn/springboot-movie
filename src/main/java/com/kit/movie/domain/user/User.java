@@ -5,6 +5,7 @@ import com.kit.movie.domain.review.Review;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,12 +13,15 @@ import java.util.List;
 
 @Getter
 @Entity
+@Setter
 @NoArgsConstructor
 @Table(name = "USERS")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="USER_ID")
     private Long id;
+
+    @Column(nullable = false)
+    private String loginID;
 
     @Column(nullable = false)
     private String name;
@@ -26,7 +30,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private Role role;
 
     @OneToMany(mappedBy = "user")
@@ -36,10 +40,11 @@ public class User {
     List<Reservation> reservations = new ArrayList<>();
 
     @Builder
-    public User(Long id, String name, String password){
-        this.id= id;
+    public User(String loginID,String name, String password, Role role){
+        this.loginID=loginID;
         this.name=name;
         this.password = password;
+        this.role = role;
     }
 //
 //

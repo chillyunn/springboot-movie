@@ -1,5 +1,6 @@
 package com.kit.movie.web;
 
+import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.service.UserService;
 import com.kit.movie.web.dto.UserLoginRequestDto;
@@ -29,9 +30,9 @@ public class UserController {
 
     @PostMapping("/users/join")
     public String addMember(@ModelAttribute UserSaveRequestDto userSaveRequestDto){
-        User user = new User(userSaveRequestDto.getId(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword());
+        //User user = new User(userSaveRequestDto.getId(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword());
+        User user = new User(userSaveRequestDto.getLoginID(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword(), Role.USER);
 
-        //UserSaveRequestDto userSaveRequestDto1 = new UserSaveRequestDto(userSaveRequestDto.getId(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword());
         userService.save(user);
         return "redirect:/";
     }

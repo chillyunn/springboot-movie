@@ -41,7 +41,7 @@ public class UserService {
 
 
         return UserLoginResponseDto.builder()
-                .id(entity.getId())
+                .id(entity.getLoginID())
                 .name(entity.getName())
                 .build();
     }

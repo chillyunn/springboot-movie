@@ -1,16 +1,15 @@
 package com.kit.movie.web.dto;
 
 import com.kit.movie.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 public class UserSaveRequestDto {
     private Long id;
+    private String loginID;
     private String name;
     private String password;
 
