@@ -19,12 +19,12 @@ public  class Theater {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "theater")
+    @OneToMany(mappedBy = "theater",cascade = CascadeType.ALL)
     List<Screen> screens = new ArrayList<>();
 
     @Builder
-    public Theater(Long id, String name) {
-        this.id = id;
+    public Theater(String name) {
         this.name = name;
     }
+
 }

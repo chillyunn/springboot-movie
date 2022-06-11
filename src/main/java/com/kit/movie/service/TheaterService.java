@@ -1,5 +1,6 @@
 package com.kit.movie.service;
 
+import com.kit.movie.domain.theater.Theater;
 import com.kit.movie.domain.theater.TheaterRepository;
 import com.kit.movie.web.dto.TheaterSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -14,5 +15,9 @@ public class TheaterService {
     @Transactional
     public Long save(TheaterSaveRequestDto requestDto){
         return theaterRepository.save(requestDto.toEntity()).getId();
+    }
+
+    public Theater findByName(String name){
+        return theaterRepository.findByName(name);
     }
 }

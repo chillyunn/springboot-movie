@@ -28,6 +28,8 @@ public class Screen {
     @JoinColumn(name = "THEATER_ID")
     private Theater theater;
 
+    @Transient
+    private String theaterName;
 
     @OneToMany(mappedBy = "screen")
     List<Seat> seats = new ArrayList<>();
@@ -40,5 +42,6 @@ public class Screen {
         this.name = name;
         this.floor = floor;
         this.theater = theater;
+        theater.getScreens().add(this);
     }
 }

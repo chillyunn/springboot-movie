@@ -2,6 +2,7 @@ package com.kit.movie.web.dto;
 
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.theater.Theater;
+import com.kit.movie.service.TheaterService;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,15 +12,14 @@ import lombok.NoArgsConstructor;
 public class ScreenSaveRequestDto {
     String name;
     Integer floor;
-    Theater theater;
+    String theaterName;
 
     @Builder
-    public ScreenSaveRequestDto(String name, Integer floor, Theater theater) {
+    public ScreenSaveRequestDto(String name, Integer floor) {
         this.name = name;
         this.floor = floor;
-        this.theater = theater;
     }
-    public Screen toEntity(){
+    public Screen toEntity(Theater theater){
         return Screen.builder()
                 .name(name)
                 .floor(floor)
