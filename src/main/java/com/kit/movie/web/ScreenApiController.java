@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScreenApiController {
     private final ScreenService screenService;
 
-
     @PostMapping("/api/screens")
     public Long save(@RequestBody ScreenSaveRequestDto requestDto){
         return screenService.save(requestDto);

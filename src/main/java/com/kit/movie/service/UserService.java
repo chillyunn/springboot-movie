@@ -31,19 +31,30 @@ public class UserService {
     }
 
     //로그인인
-    public UserLoginResponseDto login(UserLoginRequestDto requestDto){
-        Long id = requestDto.getId();
-        User entity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 아이디의 회원정보가 없습니다. id=" +id));
-        String password = requestDto.getPassword();
+//    public UserLoginResponseDto login(UserLoginRequestDto requestDto){
+//
+//        String loginID = requestDto.getLoginID();
+//        //User entity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 아이디의 회원정보가 없습니다. id=" +id));
+//        String password = requestDto.getPassword();
+//
+//        //User findUser = userRepository.findOne(loginID);
+//
+//        //비밀번호 일치하지 않을경우
+//
+//
+////        return UserLoginResponseDto.builder()
+////                .id(entity.getLoginID())
+////                .name(entity.getName())
+////                .build();
+//    }
 
-
-        //비밀번호 일치하지 않을경우
-
-
-        return UserLoginResponseDto.builder()
-                .id(entity.getLoginID())
-                .name(entity.getName())
-                .build();
+    public User login(String loginID, String password){
+        User findUser = userRepository.findByLoginID(loginID);
+        if(findUser!=null && findUser.getPassword().equals(password)){
+            return findUser;
+        }else{
+            return null;
+        }
     }
 
     public Long checkId(Long id){
@@ -55,9 +66,13 @@ public class UserService {
         }
     }
 
-    public UserResponseDto findById(Long id){
+//    public UserResponseDto findByloginID(String loginID){
+//        User entity = userRepository
+//    }
+
+    public User findById(Long id){
         User entity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 아이디의 회원정보가 없습니다. id=" +id));
-        return new UserResponseDto(entity);
+        return entity;
     }
 
 

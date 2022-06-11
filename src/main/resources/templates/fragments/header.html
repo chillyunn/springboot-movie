@@ -9,13 +9,24 @@
                         <img src="/images/logoRed.png" alt="CGV">
                     </a>
                     <span>CULTUREPLEX</span>
+                    <div th:if="${user}">
+                        <h4 th:text="|로그인:${user.name}|">로그인 사용자 이름</h4>
+                    </div>
                 </h1>
                 <ul class="memberInfo_wrap">
                     <li>
-                        <a href="/user/login">
-                            <img src="/images/loginPassword.png" alt="로그인">
-                            <span>로그인</span>
-                        </a>
+                        <div th:if="${user}">
+                            <a href="/user/logout">
+                                <img src="/images/loginPassword.png" alt="로그인">
+                                <span>로그아웃</span>
+                            </a>
+                        </div>
+                        <div th:unless="${user}">
+                            <a href="/user/login">
+                                <img src="/images/loginPassword.png" alt="로그인">
+                                <span>로그인</span>
+                            </a>
+                        </div>
                     </li>
                     <li>
                         <a href="/users/join">
@@ -24,10 +35,22 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/user/mycgv">
-                            <img src="/images/loginMember.png" alt="MY CGV">
-                            <span>MY CGV</span>
-                        </a>
+                        <div th:if="${user}">
+                            <a th:href="@{'/user/'+${user.id}}">
+                                <img src="/images/loginMember.png" alt="MY CGV">
+                                <span>MY CGV</span>
+                            </a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div th:if="${user}">
+                            <div th:if="${#strings.equals(user.getRole(),T(com.kit.movie.domain.user.Role).ADMIN)}">
+                                <a href="/user/admin">
+                                   <span>관리자 페이지</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
