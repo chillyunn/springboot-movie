@@ -1,5 +1,6 @@
 package com.kit.movie.web;
 
+import com.kit.movie.domain.user.User;
 import com.kit.movie.service.UserService;
 import com.kit.movie.web.dto.UserLoginRequestDto;
 import com.kit.movie.web.dto.UserLoginResponseDto;
@@ -20,19 +21,28 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @GetMapping("user/join")
-    public String addMember(Model model){
-        model.addAttribute("member", new UserSaveRequestDto());
-        return "members/join-form.html";
+    @GetMapping("users/join")
+    public String createForm(Model model){
+        model.addAttribute("user", new UserSaveRequestDto());
+        return "members/join-form";
     }
 
-    @PostMapping("/user/join")
-    public Long save(@RequestBody UserSaveRequestDto requestDto){
-        return userService.save(requestDto);
+    @PostMapping("/users/join")
+    public String addMember(@ModelAttribute UserSaveRequestDto userSaveRequestDto){
+        User user = new User(userSaveRequestDto.getId(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword());
+
+        //UserSaveRequestDto userSaveRequestDto1 = new UserSaveRequestDto(userSaveRequestDto.getId(), userSaveRequestDto.getName(), userSaveRequestDto.getPassword());
+        userService.save(user);
+        return "redirect:/";
     }
 
-    @PostMapping("/user/login")
-    public UserLoginResponseDto login(@RequestBody UserLoginRequestDto requestDto){
-        return userService.login(requestDto);
+    @GetMapping("/user/login")
+    public String loginForm(@ModelAttribute("loginForm") UserLoginRequestDto userLoginRequestDto){
+        return "members/login";
     }
+
+//    @PostMapping("/user/login")
+//    public String login(@ModelAttribute UserLoginRequestDto userLoginRequestDto){
+//
+//    }
 }

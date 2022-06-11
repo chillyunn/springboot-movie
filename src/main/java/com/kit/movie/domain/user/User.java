@@ -15,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "USERS")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="USER_ID")
     private Long id;
 
     @Column(nullable = false)
@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private Role role;
 
     @OneToMany(mappedBy = "user")
@@ -36,11 +36,10 @@ public class User {
     List<Reservation> reservations = new ArrayList<>();
 
     @Builder
-    public User(Long id, String name, String password, Role role){
+    public User(Long id, String name, String password){
         this.id= id;
         this.name=name;
         this.password = password;
-        this.role=role;
     }
 //
 //

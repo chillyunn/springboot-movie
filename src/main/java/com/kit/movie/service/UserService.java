@@ -12,21 +12,31 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
 
-    @Transactional
-    public Long save(UserSaveRequestDto userSaveRequestDto){
+//    @Transactional
+//    public Long save(UserSaveRequestDto userSaveRequestDto){
+//
+//        return userRepository.save(userSaveRequestDto.toEntity(userSaveRequestDto.getPassword())).getId();
+////        userRepository.save(userSaveRequestDto.toEntity());
+////        return userSaveRequestDto.getId();
+//    }
 
-        return userRepository.save(userSaveRequestDto.toEntity(userSaveRequestDto.getPassword())).getId();
+    public Long save(User user){
+        userRepository.save(user);
+        return user.getId();
     }
 
-    @Transactional //로그인인
+    //로그인인
     public UserLoginResponseDto login(UserLoginRequestDto requestDto){
         Long id = requestDto.getId();
         User entity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 아이디의 회원정보가 없습니다. id=" +id));
         String password = requestDto.getPassword();
+
+
         //비밀번호 일치하지 않을경우
 
 
@@ -36,7 +46,6 @@ public class UserService {
                 .build();
     }
 
-    @Transactional
     public Long checkId(Long id){
         if(!userRepository.existsById(id)){
             return id;
