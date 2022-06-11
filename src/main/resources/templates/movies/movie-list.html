@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<body>
+<section layout:fragment="content" class="main-content">
+    <div id="container">
+        <div class="contents main-contents">
+            <h3>
+                <span>무비차트</span>
+            </h3>
+            <div class="sect-movie-chart">
+                <ol>
+                    <li th:each="movie : ${movies}">
+                        <div class="box-image">
+                            <strong class="rank">No.1</strong>
+                            <a th:href="@{/movies/detail(movieid=${movie.id})}">
+                                <span class="thumb-image">
+                                    <img th:src="${movie.imgUrl}" alt="${movie.name}">
+                                </span>
+                            </a>
+                        </div>
+                        <div class="box-contents">
+                            <a th:href="@{/movies/detail(movieid=${movie.id})}">
+                                <strong class="title" th:text="${movie.name}"></strong>
+                            </a>
+                            <div class="score">
+                                <strong class="percent">
+                                    예매율
+                                    <span th:text="${movie.reservationRate}"></span>
+                                </strong>
+                            </div>
+                            <span class="txt-info">
+                                <strong th:text="${movie.releaseDate}">
+                                    <span>개봉</span>
+                                </strong>
+                            </span>
+                            <span class="like">
+                                <a class="link-reservation" th:href="@{/ticket/(movieid=${movie.id})}">예매하기</a>
+                            </span>
+                        </div>
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

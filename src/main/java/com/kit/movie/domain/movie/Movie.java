@@ -26,7 +26,7 @@ public class Movie {
     private Double reservationRate;
 
     @Column(nullable = false)
-    private Date releaseDate;
+    private String releaseDate;
 
     @Column(nullable = false)
     private String director;
@@ -38,7 +38,7 @@ public class Movie {
     private String imgUrl;
 
     @Builder
-    public Movie(String name, Date releaseDate, String director, String genre, String imgUrl) {
+    public Movie(String name, String releaseDate, String director, String genre, String imgUrl) {
         this.name = name;
         this.releaseDate = releaseDate;
         this.director = director;

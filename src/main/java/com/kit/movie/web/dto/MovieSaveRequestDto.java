@@ -4,20 +4,22 @@ import com.kit.movie.domain.movie.Movie;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import java.util.Date;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class MovieSaveRequestDto {
     private String name, director;
-    private Date releaseDate;
+    private String releaseDate;
     private String genre;
     private String imgUrl;
 
     @Builder
-    public MovieSaveRequestDto(String name, String director, Date releaseDate, String genre, String imgUrl) {
+    public MovieSaveRequestDto(String name, String director, String releaseDate, String genre, String imgUrl) {
         this.name = name;
         this.director = director;
         this.releaseDate = releaseDate;
