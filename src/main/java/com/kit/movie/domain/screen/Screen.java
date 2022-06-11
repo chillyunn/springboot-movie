@@ -3,13 +3,16 @@ package com.kit.movie.domain.screen;
 import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.seat.Seat;
 import com.kit.movie.domain.theater.Theater;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor
 @Entity
 public class Screen {
     @Id
@@ -31,4 +34,11 @@ public class Screen {
 
     @OneToMany(mappedBy = "screen")
     List<Reservation> reservations = new ArrayList<>();
+
+    @Builder
+    public Screen(String name, Integer floor, Theater theater) {
+        this.name = name;
+        this.floor = floor;
+        this.theater = theater;
+    }
 }
