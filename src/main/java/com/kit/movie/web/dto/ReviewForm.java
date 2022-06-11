@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +13,5 @@ import javax.validation.constraints.NotBlank;
 public class ReviewForm {
     private Long id;
 
-    @NotBlank(message = "공백X")
     private String name;
 }
