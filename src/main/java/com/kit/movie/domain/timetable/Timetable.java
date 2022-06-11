@@ -1,8 +1,8 @@
-package com.kit.movie.domain.reservation;
+package com.kit.movie.domain.timetable;
 
+import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.seat.Seat;
-import com.kit.movie.domain.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,22 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Entity
 @NoArgsConstructor
-public class Reservation {
+@Entity
+@Table(name = "TIMETABLES")
+public class Timetable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
+
+    @Column(nullable = false)
+    private String time;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SCREEN_ID")
     private Screen screen;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
-    private User userResv;
+    @JoinColumn(name = "MOVIE_ID")
+    private Movie movie;
 
-    @OneToMany(mappedBy = "reservation")
-    private List<Seat> seats = new ArrayList<>();
-
+    @OneToMany(mappedBy = "timetable",cascade = CascadeType.ALL)
+    private List<Seat> seats= new ArrayList<>();
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<body>
+<section layout:fragment="content" class="main-content">
+    <div id="container">
+        <div class="contents">
+            <h3>
+                <span>신규 영화 등록</span>
+            </h3>
+            <form id="register-form" th:action="@{/users/join}" th:object="${movie}" method="post">
+                <div class="form-row">
+                    <label>이름: </label><input type="text" th:field="*{name}" placeholder="아이디"/><br/>
+                </div>
+                <div class="form-row">
+                    <label>개봉일: </label> <input type="text" th:field="*{releaseDate}" autofocus="autofocus"
+                                                placeholder="개봉일"/>
+                </div>
+                <div class="form-row">
+                    <label>감독: </label><input type="text" th:field="*{director}" placeholder="감독"/><br/>
+                </div>
+                <div class="form-row">
+                    <label>장르: </label><input type="text" th:field="*{genre}" placeholder="장르"/><br/>
+                </div>
+                <div class="form-row">
+                    <label>이미지주소: </label><input type="text" th:field="*{imgUrl}" placeholder="이미지주소"/><br/>
+                </div>
+                <div class="form-row">
+                    <input type="submit" value="등록"/>
+                    <input type="reset" value="다시입력"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

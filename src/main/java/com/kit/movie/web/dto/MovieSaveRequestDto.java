@@ -14,13 +14,15 @@ public class MovieSaveRequestDto {
     private String name, director;
     private Date releaseDate;
     private String genre;
+    private String imgUrl;
 
     @Builder
-    public MovieSaveRequestDto(String name, String director, Date releaseDate, String genre) {
+    public MovieSaveRequestDto(String name, String director, Date releaseDate, String genre, String imgUrl) {
         this.name = name;
         this.director = director;
         this.releaseDate = releaseDate;
         this.genre = genre;
+        this.imgUrl = imgUrl;
     }
 
     public Movie toEntity(){
@@ -29,6 +31,7 @@ public class MovieSaveRequestDto {
                 .director(director)
                 .releaseDate(releaseDate)
                 .genre(genre)
+                .imgUrl(imgUrl)
                 .build();
     }
 }

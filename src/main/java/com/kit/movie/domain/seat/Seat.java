@@ -1,28 +1,37 @@
 package com.kit.movie.domain.seat;
 
-import com.kit.movie.domain.reservation_seat.Reservation_Seat;
-import com.kit.movie.domain.screen.Screen;
+
+import com.kit.movie.domain.reservation.Reservation;
+import com.kit.movie.domain.timetable.Timetable;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Getter
 @NoArgsConstructor
 @Entity
 public class Seat {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "SCREEN_ID")
-    private Screen screen;
     @Column
     private String name;
+    @Column
+    private Boolean isBooked;
 
-    @OneToMany(mappedBy = "seat")
-    private List<Reservation_Seat> reservationSeats = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Timetable timetable;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Reservation reservation;
+    @Builder
+    public Seat(Long id, String name, Boolean isBooked, Timetable timetable) {
+        this.id = id;
+        this.name = name;
+        this.isBooked = isBooked;
+        this.timetable = timetable;
+    }
 }

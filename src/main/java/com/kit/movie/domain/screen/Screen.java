@@ -3,6 +3,7 @@ package com.kit.movie.domain.screen;
 import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.seat.Seat;
 import com.kit.movie.domain.theater.Theater;
+import com.kit.movie.domain.timetable.Timetable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,18 +25,18 @@ public class Screen {
     @Column(nullable = false)
     private Integer floor;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "THEATER_ID")
     private Theater theater;
 
     @Transient
     private String theaterName;
 
-    @OneToMany(mappedBy = "screen")
-    List<Seat> seats = new ArrayList<>();
-
-    @OneToMany(mappedBy = "screen")
+    @OneToMany(mappedBy = "screen",cascade = CascadeType.ALL)
     List<Reservation> reservations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "screen",cascade = CascadeType.ALL)
+    List<Timetable> timetables = new ArrayList<>();
 
     @Builder
     public Screen(String name, Integer floor, Theater theater) {
