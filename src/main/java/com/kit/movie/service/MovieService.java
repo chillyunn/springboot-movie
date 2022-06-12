@@ -16,10 +16,14 @@ public class MovieService {
 
     @Transactional
     public Long save(MovieSaveRequestDto requestDto){
-        return movieRepository.save(requestDto.toEntity()).getId();
+        return movieRepository.save(requestDto.toEntity()).getMovieId();
     }
 
     public List<Movie> findAll() {
         return movieRepository.findAll();
+    }
+
+    public Movie findById(Long id) {
+        return movieRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 Movie"));
     }
 }

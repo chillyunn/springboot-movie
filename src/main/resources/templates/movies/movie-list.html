@@ -13,14 +13,14 @@
                     <li th:each="movie : ${movies}">
                         <div class="box-image">
                             <strong class="rank">No.1</strong>
-                            <a th:href="@{/movies/detail(movieid=${movie.id})}">
+                            <a th:href="@{/movies/detail(movieId=${movie.movieId})}">
                                 <span class="thumb-image">
-                                    <img th:src="${movie.imgUrl}" alt="${movie.name}">
+                                    <img th:src="${movie.imgUrl}" th:alt="${movie.name}">
                                 </span>
                             </a>
                         </div>
                         <div class="box-contents">
-                            <a th:href="@{/movies/detail(movieid=${movie.id})}">
+                            <a th:href="@{/movies/detail(movieId=${movie.movieId})}">
                                 <strong class="title" th:text="${movie.name}"></strong>
                             </a>
                             <div class="score">
@@ -30,12 +30,11 @@
                                 </strong>
                             </div>
                             <span class="txt-info">
-                                <strong th:text="${movie.releaseDate}">
-                                    <span>개봉</span>
+                                <strong th:text="|${movie.releaseDate} 개봉|">
                                 </strong>
                             </span>
                             <span class="like">
-                                <a class="link-reservation" th:href="@{/ticket/(movieid=${movie.id})}">예매하기</a>
+                                <a class="link-reservation" th:href="@{/ticket/(movieId=${movie.movieId})}">예매하기</a>
                             </span>
                         </div>
                     </li>

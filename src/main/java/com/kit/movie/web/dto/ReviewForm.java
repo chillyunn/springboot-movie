@@ -6,12 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class ReviewForm {
     private Long id;
-
-    private String name;
+//
+//    @NotBlank(message = "공백X")
+//    private String name;
 }

@@ -154,7 +154,10 @@ input, select img {
 .memberInfo_wrap {
     margin: 0;
 }
-
+#contents{
+    clear: both;
+    padding-bottom: 50px;
+}
 #container {
     overflow: hidden;
     position: relative;
@@ -336,7 +339,7 @@ strong {
 [class|="sect"][class*="wishlist"] .like .link-reservation, [class|="sect"][class*="chart"] .like .link-reservation {
     width: 97px !important;
     height: 25px !important;
-    background: url(../images/sprite/sprite_preegg.png) 0 -110px no-repeat !important;
+    background: url(https://img.cgv.co.kr/R2014/images/sprite/sprite_preegg.png) 0 -110px no-repeat !important;
 }
 [class|="sect"][class*="chart"] .link-reservation {
     width: 57px;
@@ -347,8 +350,134 @@ strong {
     display: inline-block;
     width: 91px;
     height: 35px;
+    background: url(https://img.cgv.co.kr/R2014/images/sprite/sprite_btn.png) 0 0 no-repeat;
+    font: 0/0 a;
+    zoom: 1;
+    vertical-align: top;
+}
+#cgvwrap .cgv-ad-wrap .sect-head-ad, .head, .im-wrap, #contents, .foot, .sect-smuse, .sect-cinfo {
+    position: relative;
+    width: 980px;
+    margin: 0 auto;
+}
+[class|="wrap-movie"][class$="detail"] [class^="sect-"] {
+    padding-top: 40px;
+}
+div[class^="sect-"] {
+    clear: both;
+    zoom: 1;
+}
+[class|="sect-base"][class$="movie"] .box-image {
+    margin-right: 30px;
+    width: 185px;
+    height: 260px;
+}
+[class|="sect-base"] .box-image {
+    float: left;
+}
+.box-image a {
+    display: block;
+}
+.thumb-image {
+    display: block;
+    position: relative;
+}
+[class|="sect-base"][class$="movie"] .thumb-image img {
+    width: 185px;
+    height: 260px;
+}
+[class|="sect-base"][class$="movie"] .box-contents {
+    width: 765px;
+}
+[class|="sect-base"] .box-contents {
+    float: left;
+    position: relative;
+}
+.title {
+    display: block;
+    color: #333333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+[class|="sect-base"] .title strong {
+    color: #1a1919;
+    font-size: 25px;
+    vertical-align: middle;
+}
+[class|="sect-base"] .score {
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d9d6c8;
+    font-size: 14px;
+}
+.score {
+    font-size: 11px;
+}
+[class|="sect-base"] .score .egg-gage, [class|="sect-base"] .score .percent {
+    vertical-align: middle;
+}
+.score .percent span {
+    color: #333333;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: Verdana, Geneva, sans-serif;
+    vertical-align: -1px;
+}
+[class|="sect-base"][class$="movie"] .spec {
+    padding-top: 18px;
+    line-height: 1.6;
+}
+.spec {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 500;
+}
+.spec dt {
+    float: left;
+}
+[class|="sect-base"] .like {
+    margin-top: 22px;
+}
+.like {
+    display: inline-block;
+    margin-right: 3px;
+}
+.link-count {
+    width: 104px;
+    height: 33px;
+    border: 1px solid #222222;
+    line-height: 33px;
+    text-align: center;
+    display: inline-block;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-right: 2px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 400;
+    /* background-color: #fdfcf0; */
+}
+.link-reservation {
+    display: inline-block;
+    width: 91px;
+    height: 35px;
     background: url(../images/sprite/sprite_btn.png) 0 0 no-repeat;
     font: 0/0 a;
     zoom: 1;
     vertical-align: top;
+}
+[class|="sect-base"][class*="movie"] .spec dd {
+    white-space: normal;
+    text-overflow: clip;
+    overflow: visible;
+}
+[class|="sect-base"][class*="movie"] .spec dd {
+    float: left;
+}
+.spec dd {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

@@ -7,10 +7,7 @@ import com.kit.movie.web.dto.MovieSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +29,14 @@ public class MovieController {
 
         return "movies/movie-list";
     }
+    @GetMapping("/movies/detail")
+    public String findById(Model model, @RequestParam Long movieId){
+        Movie movie = movieService.findById(movieId);
+        MovieResponseDto movieResponseDto = new MovieResponseDto(movie);
+        model.addAttribute("movie",movieResponseDto);
+
+        return "movies/movie-detail";
+    }
     @GetMapping("/movies/add")
     public String saveForm(Model model){
         model.addAttribute("movie",new MovieSaveRequestDto());
@@ -41,7 +46,7 @@ public class MovieController {
     @PostMapping("/movies/add")
     public String save(@ModelAttribute MovieSaveRequestDto requestDto) {
         movieService.save(requestDto);
-        return "redirect:/";
+        return "redirect:/movies";
     }
 
 }
