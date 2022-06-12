@@ -28,7 +28,13 @@
     </div>
 <script>
     function hide(id){
-        document.getElementById(id).style.display="none";
+        if (id =="percent") {
+            document.getElementById(id).style.display = "none";
+            document.getElementById('flat').style.display = "block";
+        }else {
+            document.getElementById(id).style.display = "block";
+            document.getElementById('flat').style.display = "hidden";
+        }
     }
 </script>
 
