@@ -6,7 +6,7 @@
 <section layout:fragment="content" class="main-content">
     <div id="container">
         <div class="movieChartBeScreen_wrap">
-            <div class="contents">
+            <div class="contents" style="width: 1200px">
                 <div class="movieChartBeScreen_btn_wrap">
                     <div class="tabBtn_wrap">
                         <h3>
@@ -21,8 +21,7 @@
                              class="swiper-slide swiper-slide-movie swiper-slide-active movieList"
                              style="width: 170.4px; margin-right: 32px">
                             <div class="img_wrap" id="image_mouse" data-scale="false" th:onmouseover="onmouseOver()">
-                                <img class="mouseOver" th:src="${movie.imgUrl}" th:alt="${movie.name}"
-                                     th:onmouseover="onmouseOver()">
+                                <img class="mouseOver" th:src="${movie.imgUrl}" th:alt="${movie.name}">
 
                             </div>
                             <div class="mouseoverClass">
@@ -43,35 +42,20 @@
                                 <span th:text="|예매율 ${movie.reservationRate}%|"></span>
                             </div>
                         </div>
-                        <button id="pageBtn" type="button" onclick="getMovies()">다음 페이지</button>
+                        <button id="pageBtn" type="button" th:onclick="getMovies()">다음 페이지</button>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
+    <script >
         function getMovies() {
-            $.ajax({
-                type: "GET",
-                url: "/",
-                data: {page: 1},
-                dataType: "text"
-            })
-                .done(function (result) {
-                    console.log(result);
-                    $(".movieList").replaceWith(result);
-                })
-                .always(function () {
-                    console.log("버튼 클릭됨")
-                })
-        }
+             let URLSearch = new URLSearchParams(location.search).get('page');
+             console.log(++URLSearch);
+             location.href="http://localhost:8080/?page="+URLSearch;
 
-        function onmouseOver() {
-            var mouseover = document.getElementById('image_mouse').nextElementSibling;
-            mouseover.style.display = "block";
         }
-
     </script>
 </section>
 

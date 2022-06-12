@@ -570,3 +570,11 @@ div[class^="sect-"] {
 .mouseoverClass{
     display: none;
 }
+.swiper-slide:hover > .mouseoverClass {
+    display: block;
+
+}
+.swiper-slide .mouseoverClass {
+    display: none;
+
+}

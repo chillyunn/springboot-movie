@@ -43,7 +43,7 @@ public class UserController {
             @SessionAttribute(name=SessionConst.LOGIN_USER, required = false) User loginUser,
             Model model,
             @RequestParam(value = "page",defaultValue = "0") int page){
-        Pageable selectedPage = PageRequest.of(page,3);
+        Pageable selectedPage = PageRequest.of(page,5);
         Page<Movie> movies = movieService.findAll(selectedPage);
         model.addAttribute("movies",movies);
         if(loginUser==null){
