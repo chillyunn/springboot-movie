@@ -21,6 +21,10 @@ class MovieTest {
     @Test
     void 페이징_테스트() {
         Pageable firstPage = PageRequest.of(0, 3);
+        Pageable secondPage = PageRequest.of(1,3);
         Page<Movie> movies = movieRepository.findAll(firstPage);
+        movies.stream().forEach(m-> System.out.println("m.getName() = " + m.getName()));
+        Page<Movie> movies2 = movieRepository.findAll(secondPage);
+        movies2.stream().forEach(m-> System.out.println("m.getName() = " + m.getName()));
     }
 }
