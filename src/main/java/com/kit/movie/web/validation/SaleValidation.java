@@ -1,33 +1,31 @@
 package com.kit.movie.web.validation;
 
-import org.springframework.util.StringUtils;
+import com.kit.movie.domain.timetable.Timetable;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
 
 public class SaleValidation implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return BookForm.class.isAssignableFrom(clazz);
+        return Timetable.class.isAssignableFrom(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        BookForm bookForm = (BookForm)target;
+        Timetable timetable = (Timetable) target;
 
-        if (!StringUtils.hasText(bookForm.getName())) {
-            errors.rejectValue("name","required");
+        if (timetable.getPercentDiscount() == null || timetable.getPercentDiscount() < 0 || timetable.getPercentDiscount() > 100) {
+            errors.rejectValue("percentDiscount","range", new Object[]{0,100},null);
         }
-        if (bookForm.getPrice() == null || bookForm.getPrice() < 1000 || bookForm.getPrice() > 1000000) {
-            errors.rejectValue("price","range", new Object[]{1000,1000000},null);
+        if (timetable.getFlatDiscount()== null || timetable.getFlatDiscount()<5000) {
+            errors.rejectValue("flatDiscount","min", new Object[]{5000}, null);
         }
-        if (bookForm.getStockQuantity() == null || bookForm.getStockQuantity() >= 9999) {
-            errors.rejectValue("stockQuantity","max", new Object[]{9999}, null);
-        }
-        if (bookForm.getPrice() != null && bookForm.getStockQuantity() != null) {
-            int resultPrice = bookForm.getPrice() * bookForm.getStockQuantity();
-            if (resultPrice < 10000) {
-                errors.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
-            }
-        }
+//        if (bookForm.getPrice() != null && bookForm.getStockQuantity() != null) {
+//            int resultPrice = bookForm.getPrice() * bookForm.getStockQuantity();
+//            if (resultPrice < 10000) {
+//                errors.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+//            }
+//        }
     }
 }
