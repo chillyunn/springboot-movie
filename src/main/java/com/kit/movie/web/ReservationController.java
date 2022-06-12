@@ -17,12 +17,12 @@ public class ReservationController {
     private final ReservationService reservationService;
 
 
-    @GetMapping("/ticket")
+    @GetMapping("/ticket/add")
     public String saveForm(Model model ,@RequestParam Long id){
         model.addAttribute("reservation",new ReservationSaveRequestDto());
         return "reservations/reservation-form";
     }
-    @PostMapping("/ticket")
+    @PostMapping("/ticket/add")
     public String save(@ModelAttribute ReservationSaveRequestDto requestDto,
                        @RequestParam Long id){
         reservationService.save(requestDto);

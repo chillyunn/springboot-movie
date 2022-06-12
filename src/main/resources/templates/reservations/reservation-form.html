@@ -8,9 +8,9 @@
             <h3>
                 <span>영화 예매</span>
             </h3>
-            <form id="register-form" th:action="@{/timetable/add}" th:object="${timetable}" method="post">
+            <form id="register-form" th:action="@{/ticket/add}" th:object="${reservation}" method="post">
                 <div class="form-row">
-                    <label>시간: </label><input type="text" th:field="*{time}" /><br/>
+                    <label>인원수: </label><input type="text" th:field="*{people}" /><br/>
                 </div>
                 <div class="form-row">
                     <label>가격: </label> <input type="text" th:field="*{price}" autofocus="autofocus"/>

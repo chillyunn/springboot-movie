@@ -27,7 +27,13 @@ public class TimetableService {
         return timetableRepository.save(requestDto.toEntity(screen,movie)).getId();
     }
 
+    @Transactional
     public List<Timetable> findAll() {
         return timetableRepository.findAll();
+    }
+
+    @Transactional
+    public Timetable findById(Long id) {
+        return timetableRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재하지않는 timetable"));
     }
 }

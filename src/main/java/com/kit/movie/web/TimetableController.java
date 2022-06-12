@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,19 @@ public class TimetableController {
     public String findAll(Model model){
         List<Timetable> timetables = timetableService.findAll();
 
+        List<TimetableResponseDto> responseDtos = timetables
+                .stream()
+                .map(t-> new TimetableResponseDto(t))
+                .collect(Collectors.toList());
+        model.addAttribute("timetables",responseDtos);
+        return "timetables/timetable-list";
+    }
+    @GetMapping("/timetable")
+    public String findById(Model model,
+                           @RequestParam Long id){
+        Timetable timetable = timetableService.findById(id);
+        List<Timetable> timetables = new ArrayList<>();
+        timetables.add(timetable);
         List<TimetableResponseDto> responseDtos = timetables
                 .stream()
                 .map(t-> new TimetableResponseDto(t))
