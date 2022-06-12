@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Setter
 @Table(name = "TIMETABLES")
 public class Timetable {
     @Id

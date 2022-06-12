@@ -134,8 +134,12 @@ public class UserController {
         return "members/admin";
     }
 
-//    @PostMapping("/user/admin/{id}")
-//    public String adminPost(@ModelAttribute TimetableSaveRequestDto timetableSaveRequestDto){
-//        Timetable
-//    }
+    @PostMapping("/timetable/admin/{id}")
+    public String adminPost(@PathVariable("id") Long id, @ModelAttribute TimetableSaveRequestDto timetableSaveRequestDto){
+        Timetable timetable=timetableService.findById(id);
+        timetable.setPrice(timetable.getPrice()-timetableSaveRequestDto.getFlatDiscount());
+
+        timetableService.save(timetable);
+        return "/";
+    }
 }

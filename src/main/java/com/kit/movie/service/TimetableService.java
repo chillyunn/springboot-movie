@@ -27,6 +27,11 @@ public class TimetableService {
         return timetableRepository.save(requestDto.toEntity(screen,movie)).getId();
     }
 
+    public Long save(Timetable timetable){
+        timetableRepository.save(timetable);
+        return timetable.getId();
+    }
+
     @Transactional
     public List<Timetable> findAll() {
         return timetableRepository.findAll();
