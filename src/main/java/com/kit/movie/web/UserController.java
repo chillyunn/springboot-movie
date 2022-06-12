@@ -137,8 +137,14 @@ public class UserController {
     @PostMapping("/timetable/admin/{id}")
     public String adminPost(@PathVariable("id") Long id, @ModelAttribute TimetableSaveRequestDto timetableSaveRequestDto){
         Timetable timetable=timetableService.findById(id);
-        timetable.setPrice(timetable.getPrice()-timetableSaveRequestDto.getFlatDiscount());
-
+        if(timetableSaveRequestDto.getFlatDiscount()==null){
+            timetable.setPercentDiscount(timetableSaveRequestDto.getPercentDiscount());
+            timetable.setPrice(timetable.getPrice()/100*timetableSaveRequestDto.getPercentDiscount());
+        }
+        else{
+            timetable.setFlatDiscount(timetableSaveRequestDto.getFlatDiscount());
+            timetable.setPrice(timetable.getPrice()-timetableSaveRequestDto.getFlatDiscount());
+        }
         timetableService.save(timetable);
         return "redirect:/";
     }

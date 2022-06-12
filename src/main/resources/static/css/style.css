@@ -574,7 +574,7 @@ div[class^="sect-"] {
     display: none;
 }
 .info-timetable{
-    width: 130px;
+    width: 100px;
     border: 1px solid black;
 }
 .info-timetable ul{
