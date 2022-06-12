@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <body>
 <section layout:fragment="content" class="main-content">
@@ -8,6 +9,25 @@
             <h3>
                 <span>무비차트</span>
             </h3>
+            <div class="contents">
+                <div class="sect-sorting">
+                    <select id="order_type" name="order-type">
+                        <option value="1">예매율순</option>
+                        <option value="2">평점순</option>
+                    </select>
+                    <button type="button" class="round gray">
+                        <span>GO</span>
+                    </button>
+                </div>
+                <div class="totalSearch_wrap">
+                    <label>
+                        <input type="text" id="header_keyword">
+
+                    </label>
+                    <button type="button" class="btn_totalSearch" id="btn_header_search">검색
+                    </button>
+                </div>
+            </div>
             <div class="sect-movie-chart">
                 <ol>
                     <li th:each="movie : ${movies}">

@@ -22,6 +22,9 @@ public class Timetable {
     @Column(nullable = false)
     private String time;
 
+    @Column(nullable = false)
+    private Integer price;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SCREEN_ID")
     private Screen screen;
