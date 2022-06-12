@@ -38,7 +38,7 @@
                             <a class="link-count" >
                                 추천하기
                             </a>
-                            <a class="link-reservation" th:href="@{/timetables(movieId=${movie.movieId})}"></a>
+                            <a class="link-reservation" th:href="@{'/timetable'+${movie.movieId}}"></a>
                             <a class="link-count" th:href="@{'/reviews/'+${movie.movieId}+'/add'}">
                                 리뷰쓰기
                             </a>

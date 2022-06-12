@@ -7,10 +7,7 @@ import com.kit.movie.web.dto.timetable.TimetableSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +29,9 @@ public class TimetableController {
         model.addAttribute("timetables",responseDtos);
         return "timetables/timetable-list";
     }
-    @GetMapping("/timetable")
+    @GetMapping("/timetable/{id}")
     public String findById(Model model,
-                           @RequestParam Long id){
+                           @PathVariable Long id){
         Timetable timetable = timetableService.findById(id);
         List<Timetable> timetables = new ArrayList<>();
         timetables.add(timetable);

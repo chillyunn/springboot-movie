@@ -1,10 +1,13 @@
 package com.kit.movie.web;
 
 import com.kit.movie.domain.movie.Movie;
+import com.kit.movie.domain.timetable.Timetable;
 import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.service.MovieService;
+import com.kit.movie.service.TimetableService;
 import com.kit.movie.service.UserService;
+import com.kit.movie.web.dto.timetable.TimetableResponseDto;
 import com.kit.movie.web.dto.timetable.TimetableSaveRequestDto;
 import com.kit.movie.web.dto.user.UserLoginRequestDto;
 import com.kit.movie.web.dto.user.UserSaveRequestDto;
@@ -20,12 +23,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
     private final MovieService movieService;
+    private final TimetableService timetableService;
 
 //    @GetMapping("/user/{id}")
 //    public UserResponseDto findById(@PathVariable Long id){
@@ -112,7 +118,19 @@ public class UserController {
 
     @GetMapping("/user/admin")
     public String adminForm(Model model){
-        model.addAttribute("timetable",new TimetableSaveRequestDto());
+        //model.addAttribute("timetable",new TimetableSaveRequestDto());
+
+
+        List<Timetable> timetables = timetableService.findAll();
+
+        List<TimetableResponseDto> responseDtos = timetables
+                .stream()
+                .map(t-> new TimetableResponseDto(t))
+                .collect(Collectors.toList());
+        model.addAttribute("timetables",responseDtos);
+
         return "members/admin";
     }
+//    @PostMapping("/user/admin")
+//    public String admin()
 }
