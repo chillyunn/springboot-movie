@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,4 +59,5 @@ public class Timetable {
         this.screen = screen;
         this.movie = movie;
     }
+
 }
