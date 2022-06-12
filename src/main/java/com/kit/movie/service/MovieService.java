@@ -2,7 +2,7 @@ package com.kit.movie.service;
 
 import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.movie.MovieRepository;
-import com.kit.movie.web.dto.MovieSaveRequestDto;
+import com.kit.movie.web.dto.movie.MovieSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

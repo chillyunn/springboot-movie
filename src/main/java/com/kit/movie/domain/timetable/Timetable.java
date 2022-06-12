@@ -3,6 +3,7 @@ package com.kit.movie.domain.timetable;
 import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.seat.Seat;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -43,4 +44,18 @@ public class Timetable {
 
     @OneToMany(mappedBy = "timetable",cascade = CascadeType.ALL)
     private List<Seat> seats= new ArrayList<>();
+
+
+    @Transient
+    private Long screenId;
+    @Transient
+    private Long movieId;
+
+    @Builder
+    public Timetable(String time, Integer price, Screen screen, Movie movie) {
+        this.time = time;
+        this.price = price;
+        this.screen = screen;
+        this.movie = movie;
+    }
 }

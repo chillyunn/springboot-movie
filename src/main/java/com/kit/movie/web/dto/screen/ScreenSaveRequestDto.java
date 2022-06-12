@@ -1,4 +1,4 @@
-package com.kit.movie.web.dto;
+package com.kit.movie.web.dto.screen;
 
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.theater.Theater;

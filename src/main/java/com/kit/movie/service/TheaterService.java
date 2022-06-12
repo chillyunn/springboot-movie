@@ -2,7 +2,7 @@ package com.kit.movie.service;
 
 import com.kit.movie.domain.theater.Theater;
 import com.kit.movie.domain.theater.TheaterRepository;
-import com.kit.movie.web.dto.TheaterSaveRequestDto;
+import com.kit.movie.web.dto.theater.TheaterSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,7 @@
 package com.kit.movie.service;
 
 import com.kit.movie.domain.screen.ScreenRepository;
-import com.kit.movie.web.dto.ScreenSaveRequestDto;
+import com.kit.movie.web.dto.screen.ScreenSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

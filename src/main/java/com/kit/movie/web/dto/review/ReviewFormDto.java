@@ -1,4 +1,4 @@
-package com.kit.movie.web.dto;
+package com.kit.movie.web.dto.review;
 
 import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.review.Review;

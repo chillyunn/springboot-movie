@@ -1,4 +1,4 @@
-package com.kit.movie.web.dto;
+package com.kit.movie.web.dto.theater;
 
 import com.kit.movie.domain.theater.Theater;
 import lombok.Builder;
@@ -15,7 +15,7 @@ public class TheaterSaveRequestDto {
         this.name = name;
     }
 
-    public Theater toEntity(){
+    public Theater toEntity() {
         return Theater.builder()
                 .name(name)
                 .build();

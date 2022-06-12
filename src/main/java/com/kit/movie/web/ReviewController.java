@@ -2,7 +2,7 @@ package com.kit.movie.web;
 
 import com.kit.movie.domain.review.Review;
 import com.kit.movie.service.ReviewService;
-import com.kit.movie.web.dto.ReviewFormDto;
+import com.kit.movie.web.dto.review.ReviewFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

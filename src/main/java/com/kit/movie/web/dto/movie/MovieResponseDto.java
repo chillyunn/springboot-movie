@@ -1,4 +1,4 @@
-package com.kit.movie.web.dto;
+package com.kit.movie.web.dto.movie;
 
 import com.kit.movie.domain.movie.Movie;
 import lombok.Getter;

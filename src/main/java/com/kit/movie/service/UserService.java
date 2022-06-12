@@ -2,10 +2,6 @@ package com.kit.movie.service;
 
 import com.kit.movie.domain.user.User;
 import com.kit.movie.domain.user.UserRepository;
-import com.kit.movie.web.dto.UserLoginRequestDto;
-import com.kit.movie.web.dto.UserLoginResponseDto;
-import com.kit.movie.web.dto.UserResponseDto;
-import com.kit.movie.web.dto.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

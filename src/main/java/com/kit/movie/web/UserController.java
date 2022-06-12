@@ -5,7 +5,9 @@ import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.service.MovieService;
 import com.kit.movie.service.UserService;
-import com.kit.movie.web.dto.*;
+import com.kit.movie.web.dto.timetable.TimetableSaveRequestDto;
+import com.kit.movie.web.dto.user.UserLoginRequestDto;
+import com.kit.movie.web.dto.user.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -110,7 +112,7 @@ public class UserController {
 
     @GetMapping("/user/admin")
     public String adminForm(Model model){
-        model.addAttribute("timetable",new TimetableRequestDto());
+        model.addAttribute("timetable",new TimetableSaveRequestDto());
         return "members/admin";
     }
 }

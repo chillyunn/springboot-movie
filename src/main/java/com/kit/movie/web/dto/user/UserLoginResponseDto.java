@@ -1,4 +1,4 @@
-package com.kit.movie.web.dto;
+package com.kit.movie.web.dto.user;
 
 import com.kit.movie.domain.user.User;
 import lombok.Builder;

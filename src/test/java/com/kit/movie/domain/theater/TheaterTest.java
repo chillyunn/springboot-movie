@@ -2,10 +2,8 @@ package com.kit.movie.domain.theater;
 
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.screen.ScreenRepository;
-import com.kit.movie.web.dto.ScreenSaveRequestDto;
-import com.kit.movie.web.dto.TheaterSaveRequestDto;
-import org.aspectj.lang.annotation.After;
-import org.hibernate.Hibernate;
+import com.kit.movie.web.dto.screen.ScreenSaveRequestDto;
+import com.kit.movie.web.dto.theater.TheaterSaveRequestDto;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

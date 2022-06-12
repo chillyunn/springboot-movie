@@ -1,7 +1,7 @@
 package com.kit.movie.web;
 
 import com.kit.movie.service.ScreenService;
-import com.kit.movie.web.dto.ScreenSaveRequestDto;
+import com.kit.movie.web.dto.screen.ScreenSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
