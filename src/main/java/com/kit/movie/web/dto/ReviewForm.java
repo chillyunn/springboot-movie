@@ -1,11 +1,15 @@
 package com.kit.movie.web.dto;
 
+import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.review.Review;
+import com.kit.movie.domain.user.User;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 
 @AllArgsConstructor
@@ -13,19 +17,28 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReviewForm {
-    private Long id;
-
-    private String name;
-
+    private User user;
+    private Movie movie;
+    private Long userId, movieId;
     private String contents;
-
-    private boolean grade; //좋아요
+    private Boolean grade; //좋아요
 
     public ReviewForm(Review review){
-        this.id = review.getId();
-        this.name = review.getName();
+        this.userId = review.getUserId();
+        this.movieId = review.getMovieId();
         this.contents = review.getContents();
-        this.grade = review.isGrade();
+        this.grade = review.getGrade();
+
+    }
+
+    public Review toEntity(Movie movie, User user){
+        return Review.builder()
+                .user(user)
+                .movie(movie)
+                .contents(contents)
+                .postDate(String.valueOf(LocalDate.now()))
+                .grade(grade)
+                .build();
 
     }
 }

@@ -1,13 +1,14 @@
 package com.kit.movie.domain.review;
 
 import com.kit.movie.domain.movie.Movie;
+import com.kit.movie.domain.user.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -19,19 +20,19 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    private String name; //회원 이름
-
-    @Column(nullable = false)
     private String contents;
 
     @Column(nullable = false)
-    private Date postDate;
+    private String postDate;
 
     @Column(nullable = false)
-    private int likeCount;
+    private Integer likeCount;
 
     @Column(nullable = false)
-    private boolean grade;
+    private Boolean grade;
+
+    @Transient
+    private Long userId, movieId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MOVIE_ID", nullable = false)
@@ -39,6 +40,14 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
-    private Movie user;
+    private User user;
 
+    @Builder
+    public Review(User user, Movie movie, String contents, String postDate, Boolean grade) {
+        this.user = user;
+        this.movie = movie;
+        this.contents = contents;
+        this.postDate = postDate;
+        this.grade = grade;
+    }
 }

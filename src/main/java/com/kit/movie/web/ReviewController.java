@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -19,21 +20,21 @@ import java.util.List;
 public class ReviewController {
     private final ReviewService reviewService;
 
-    @PostMapping("reviews/new")
-    public String create(@Validated @ModelAttribute ReviewForm reviewForm, BindingResult bindingResult, Model model){
-        if (bindingResult.hasErrors()) {
-//            log.info("errors = {} ", bindingResult);
-            return "reviews/review-form";
-        }
-        //model.addAttribute("bookForm",updateSaveForm)
-        Review review = new Review();
-        review.setName(reviewForm.getName());
-        review.setContents(reviewForm.getContents());
-        review.setGrade(reviewForm.isGrade());
-
-        reviewService.saveReview(review);
-        return "redirect:/";
-    }
+//    @PostMapping("reviews/new")
+//    public String create(@Validated @ModelAttribute ReviewForm reviewForm, BindingResult bindingResult, Model model){
+//        if (bindingResult.hasErrors()) {
+////            log.info("errors = {} ", bindingResult);
+//            return "reviews/review-form";
+//        }
+//        //model.addAttribute("bookForm",updateSaveForm)
+//        Review review = new Review();
+//        review.setName(reviewForm.getName());
+//        review.setContents(reviewForm.getContents());
+//        review.setGrade(reviewForm.getGrade());
+//
+//        reviewService.saveReview(review, );
+//        return "redirect:/";
+//    }
 
     @GetMapping("reviews")
     public String reviewList(Model model){
@@ -42,15 +43,28 @@ public class ReviewController {
         return "reviews/~~~";
     }
 
-    @PostMapping("review/edit")
-    public String updateReview(ReviewForm form){
-        Review review = new Review();
-        review.setId(form.getId());
-        review.setName(form.getName());
-        review.setContents(form.getContents());
-        review.setGrade(form.isGrade());
+//    @PostMapping("review/edit")
+//    public String updateReview(ReviewForm form){
+//        Review review = new Review();
+//        review.setId(form.getId());
+//        review.setName(form.getName());
+//        review.setContents(form.getContents());
+//        review.setGrade(form.getGrade());
+//
+//        reviewService.saveReview(review);
+//        return "redirect:/items";
+//    }
 
-        reviewService.saveReview(review);
-        return "redirect:/items";
+    @GetMapping("/reviews/{id}/add")
+    public String saveForm(Model model, @PathVariable Long id) {
+        model.addAttribute("review", new ReviewForm());
+        return "reviews/review-form";
     }
+
+    @PostMapping("/reviews/{id}/add")
+    public String save(@ModelAttribute ReviewForm reviewForm, @PathVariable Long id){
+        reviewService.saveReview(reviewForm, id);
+        return "redirect:/movies/detail?movieId=" + id;
+    }
+
 }
