@@ -1,6 +1,7 @@
 package com.kit.movie.web;
 
 import com.kit.movie.domain.review.Review;
+import com.kit.movie.domain.user.User;
 import com.kit.movie.service.ReviewService;
 import com.kit.movie.web.dto.review.ReviewFormDto;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,7 +37,7 @@ public class ReviewController {
 //    }
 
     @GetMapping("reviews")
-    public String reviewList(Model model){
+    public String reviewList(Model model) {
         List<Review> reviews = reviewService.findReviews();
 
         return "reviews/~~~";
@@ -54,14 +56,16 @@ public class ReviewController {
 //    }
 
     @GetMapping("/reviews/{id}/add")
-    public String saveForm(Model model, @PathVariable Long id) {
+    public String saveForm(Model model, @PathVariable Long id, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute(SessionConst.LOGIN_USER);
         model.addAttribute("review", new ReviewFormDto());
         model.addAttribute("movieId", id);
+        model.addAttribute("user", user);
         return "reviews/review-form";
     }
 
     @PostMapping("/reviews/{id}/add")
-    public String save(@ModelAttribute ReviewFormDto reviewFormDto, @PathVariable Long id){
+    public String save(@ModelAttribute ReviewFormDto reviewFormDto, @PathVariable Long id) {
         reviewService.saveReview(reviewFormDto, id);
         return "redirect:/movies/detail?movieId=" + id;
     }

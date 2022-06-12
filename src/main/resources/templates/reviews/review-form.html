@@ -13,7 +13,7 @@
             <div id="contents">
                 <h3>리뷰 등록</h3>
                 <div th:if="${user}">
-                    <h4 th:text="|로그인:${review.userId}|">로그인 사용자 Id</h4>
+                    <h4 th:text="|로그인:${user.id}|">로그인 사용자 Id</h4>
                 </div>
                 <form id="register-form" th:action="@{'/reviews/'+${movieId}+'/add'}" th:object="${review}" method="post">
 
@@ -24,6 +24,10 @@
                         <div class="field-error" th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}">
                             리뷰 오류
                         </div>
+                        <input type="hidden" th:field="*{user}" id="user">
+                        <input type="hidden" th:field="*{movie}" id="movie">
+                        <input type="hidden" th:field="*{user.id}" id="userid">
+                        <input type="hidden" th:field="*{movie.movieId}" id="movieid">
                     </div>
 
                     <div class="form-row">

@@ -10,13 +10,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ReviewResponseDto {
+    private Long id;
     private User user;
     private String contents, postDate;
     private Integer likeCount;
     private Boolean grade;
 
-    public ReviewResponseDto(Review entity){
-        this.user =entity.getUser();
+    public ReviewResponseDto(Review entity) {
+        this.id = entity.getId();
+        this.user = entity.getUser();
         this.contents = entity.getContents();
         this.postDate = entity.getPostDate();
         this.likeCount = entity.getLikeCount();

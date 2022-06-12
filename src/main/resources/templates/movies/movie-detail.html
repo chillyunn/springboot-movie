@@ -63,9 +63,9 @@
                 <tbody>
                 <tr th:each="review : ${reviews}">
                     <!-- 회원이름, 평가내용, 게시일, 좋아요 수, 평점 -->
-                    <td><span th:text="${review.username}"></span></td>
+                    <td><span th:text="${review.user.name}"></span></td>
                     <td><span th:text="${review.contents}"></span></td>
-                    <td><span th:text="${review.date}"></span></td>
+                    <td><span th:text="${review.postDate}"></span></td>
                     <td><span th:text="${review.likeCount}"></span></td>
                     <td><span th:text="${review.grade}"></span></td>
                     <td><a class="btn-primary btn-sm" th:href="@{review/edit/{id}(id = ${review.id})}">수정</a><td>

@@ -52,7 +52,11 @@ public class MovieController {
                 .stream()
                 .map(r -> new ReviewResponseDto(r))
                 .collect(Collectors.toList());
-        model.addAttribute("review", reviewResponseDtos);
+        for (ReviewResponseDto dto:reviewResponseDtos
+             ) {
+            System.out.println( reviewResponseDtos.toString());
+        }
+        model.addAttribute("reviews", reviewResponseDtos);
 
         return "movies/movie-detail";
     }
