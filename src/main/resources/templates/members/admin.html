@@ -13,20 +13,24 @@
         <h1>관리자 페이지</h1>
         <form id="register-form" th:action="@{|${timetable.id}|}" th:object="${timetable}" method="post">
             <div class="form-row">
-                <input type="radio" name="chk_info" value="정률할인">정률 할인
-                <input type="radio" name="chk_info" value="정액할인">정액 할인
+                <input type="radio" name="chk_info" value="정률할인" onclick="hide('flat')">정률 할인
+                <input type="radio" name="chk_info" value="정액할인" onclick="hide('percent')">정액 할인
             </div>
-            <div class="form-row" >
+            <div id="percent" class="form-row" >
                 <label>정률할인: </label><input type="text" th:field="*{percentDiscount}" placeholder="정률할인"/>
             </div>
-            <div class="form-row">
+            <div id="flat"  class="form-row">
                 <label>정액할인: </label><input type="text" th:field="*{flatDiscount}" placeholder="정액할인"/>
             </div>
 
             <input type="submit" value="적용"/>
         </form>
     </div>
-<!--        ㅇㅇ-->
+<script>
+    function hide(id){
+        document.getElementById(id).style.display="none";
+    }
+</script>
 
 </section>
 
