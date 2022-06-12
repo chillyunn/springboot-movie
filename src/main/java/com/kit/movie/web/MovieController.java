@@ -8,6 +8,9 @@ import com.kit.movie.web.dto.MovieResponseDto;
 import com.kit.movie.web.dto.MovieSaveRequestDto;
 import com.kit.movie.web.dto.ReviewResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +24,13 @@ public class MovieController {
     private final MovieService movieService;
     private final ReviewService reviewService;
 
+//    @GetMapping("/")
+//    public String index(Model model){
+//        Pageable firstPage = PageRequest.of(0,3);
+//        Page<Movie> movies = movieService.findAll(firstPage);
+//        model.addAttribute("movie",movies);
+//        return "redirect:/";
+//    }
     @GetMapping("/movies") //id로 영화 찾기 - 불필요해보임
     public String findAll(Model model) {
         List<Movie> movies = movieService.findAll();

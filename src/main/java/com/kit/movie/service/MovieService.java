@@ -4,6 +4,8 @@ import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.movie.MovieRepository;
 import com.kit.movie.web.dto.MovieSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,6 +23,9 @@ public class MovieService {
 
     public List<Movie> findAll() {
         return movieRepository.findAll();
+    }
+    public Page<Movie> findAll(Pageable pageable){
+        return movieRepository.findAll(pageable);
     }
 
     public Movie findById(Long id) {

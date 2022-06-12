@@ -16,10 +16,16 @@
                 <div class="wiper movieChart_list swiper-container-initialized swiper-container-horizontal"
                      id="movieChart_list" style="display: block">
                     <div class="swiper-wrapper" style="transform: translate3d(0px,0px,0px);">
-                        <div class="swiper-slide swiper-slide-movie swiper-slide-active"
+
+                        <div th:each="movie : ${movies}" class="swiper-slide swiper-slide-movie swiper-slide-active"
                              style="width: 170.4px; margin-right: 32px">
                             <div class="img_wrap" data-scale="false">
-                                <img src="" alt="">
+                                <img th:src="${movie.imgUrl}" th:alt="${movie.name}">
+                            </div>
+                            <div class="movie_info_wrap">
+                                <strong class="movieName" th:text="${movie.name}"></strong>
+                                <span></span>
+                                <span th:text="|예매율 ${movie.reservationRate}%|"></span>
                             </div>
                         </div>
 

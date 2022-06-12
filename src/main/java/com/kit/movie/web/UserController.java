@@ -1,10 +1,15 @@
 package com.kit.movie.web;
 
+import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
+import com.kit.movie.service.MovieService;
 import com.kit.movie.service.UserService;
 import com.kit.movie.web.dto.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +23,7 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final MovieService movieService;
 
 //    @GetMapping("/user/{id}")
 //    public UserResponseDto findById(@PathVariable Long id){
@@ -32,12 +38,12 @@ public class UserController {
         return "members/myInfo";
     }
 
-
-
     @GetMapping("/")
     public String home(
             @SessionAttribute(name=SessionConst.LOGIN_USER, required = false) User loginUser, Model model){
-
+        Pageable firstPage = PageRequest.of(0,3);
+        Page<Movie> movies = movieService.findAll(firstPage);
+        model.addAttribute("movies",movies);
         if(loginUser==null){
             return "index";
         }
