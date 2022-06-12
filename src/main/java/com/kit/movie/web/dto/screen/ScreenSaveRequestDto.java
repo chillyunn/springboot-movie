@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ScreenSaveRequestDto {
-    String name;
+    Integer name;
     Integer floor;
+    String type;
     String theaterName;
 
     @Builder
-    public ScreenSaveRequestDto(String name, Integer floor) {
+    public ScreenSaveRequestDto(String type,Integer name, Integer floor) {
         this.name = name;
         this.floor = floor;
     }

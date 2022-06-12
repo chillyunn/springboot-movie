@@ -8,30 +8,26 @@
     <div id="container">
         <div id="contents">
             <div class="contents main-contents">
-                <h3>
-                    <span>상영시간표</span>
-                </h3>
+                <h3><span>상영시간표</span></h3>
                 <ul>
-                    <li>
+                    <li th:each="timetable:${timetables}">
                         <div class="col-times">
-                            <div class="info-movie">
-                                <a href="">범죄도시</a>
-                                <i>범죄,액션</i>
-                                <i>106분</i>
-                                <i>220518 개봉</i>
+                            <div th:href="@{/ticket/(id=${timetable.id})}" class="info-movie">
+                                <a th:text="${timetable.movie.name}"></a>
+                                <i th:text="${timetable.movie.genre}"></i>
+                                <i th:text="|${timetable.movie.releaseDate} 개봉|"> </i>
                             </div>
                             <div class="type-hall">
                                 <div class="info-hall">
                                     <ul>
-                                        <li>2d</li>
-                                        <li>2관 6층</li>
+                                        <li th:text="|${timetable.screen.name} ${timetable.screen.floor} 층|"></li>
                                         <li>총 124석</li>
                                     </ul>
                                 </div>
                                 <div class="info-timetable">
                                     <ul>
                                         <li>
-                                            <em>22:50</em>
+                                            <em th:text="${timetable.time}"></em>
                                             <span>마감</span>
                                         </li>
                                     </ul>

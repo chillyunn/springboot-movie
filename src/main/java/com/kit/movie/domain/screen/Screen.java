@@ -20,10 +20,13 @@ public class Screen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
+    private Integer name;
 
     @Column(nullable = false)
     private Integer floor;
+
+    @Column(nullable = false)
+    private String type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "THEATER_ID")
@@ -39,7 +42,7 @@ public class Screen {
     List<Timetable> timetables = new ArrayList<>();
 
     @Builder
-    public Screen(String name, Integer floor, Theater theater) {
+    public Screen(Integer name, String type,Integer floor, Theater theater) {
         this.name = name;
         this.floor = floor;
         this.theater = theater;

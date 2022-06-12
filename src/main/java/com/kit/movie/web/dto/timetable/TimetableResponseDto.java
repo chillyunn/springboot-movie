@@ -11,11 +11,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TimetableResponseDto {
+    private Long id;
     private String time;
     private Screen screen;
     private Movie movie;
 
     public TimetableResponseDto(Timetable entity) {
+        this.id=entity.getId();
         this.time = entity.getTime();
         this.screen = entity.getScreen();
         this.movie = entity.getMovie();

@@ -13,20 +13,21 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 public class MovieSaveRequestDto {
-    private String name, director;
-    private String releaseDate;
-    private String genre;
-    private String imgUrl;
+    private String name, director,releaseDate,genre,imgUrl,actor;
+    private Integer grade,runtime;
 
-    @Builder
-    public MovieSaveRequestDto(String name, String director, String releaseDate, String genre, String imgUrl) {
+    public MovieSaveRequestDto(String name, String director, String releaseDate, String genre, String imgUrl, Integer grade, Integer runtime,String actor) {
         this.name = name;
         this.director = director;
         this.releaseDate = releaseDate;
         this.genre = genre;
         this.imgUrl = imgUrl;
+        this.grade = grade;
+        this.runtime = runtime;
+        this.actor=actor;
     }
 
+    @Builder
     public Movie toEntity(){
         return Movie.builder()
                 .name(name)
@@ -34,6 +35,9 @@ public class MovieSaveRequestDto {
                 .releaseDate(releaseDate)
                 .genre(genre)
                 .imgUrl(imgUrl)
+                .grade(grade)
+                .runtime(runtime)
+                .actor(actor)
                 .build();
     }
 }

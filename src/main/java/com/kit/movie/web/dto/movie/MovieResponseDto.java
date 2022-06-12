@@ -14,6 +14,8 @@ public class MovieResponseDto {
     private Double reservationRate;
     private String releaseDate;
     private String imgUrl;
+    private Integer runtime,grade;
+    private String actor;
 
     public MovieResponseDto(Movie entity) {
         this.movieId = entity.getMovieId();
@@ -23,6 +25,8 @@ public class MovieResponseDto {
         this.director = entity.getDirector();
         this.genre = entity.getGenre();
         this.imgUrl=entity.getImgUrl();
+        this.actor=entity.getActor();
+        this.grade=entity.getGrade();
     }
 
 }

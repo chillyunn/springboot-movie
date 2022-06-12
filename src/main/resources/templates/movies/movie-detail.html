@@ -27,8 +27,9 @@
                         </div>
                         <div class="spec">
                             <dl>
+                                <dt th:text="|상영등급 : ${movie.grade} |"></dt><br>
                                 <dt th:text="|감독 : ${movie.director} |"></dt><br>
-                                <dt th:text="|배우 : ${movie.director} |"></dt><br>
+                                <dt th:text="|배우 : ${movie.actor} |"></dt><br>
                                 <dt th:text="|장르 : ${movie.genre} |"></dt><br>
                                 <dt th:text="|개봉 : ${movie.releaseDate} |"></dt>
                             </dl>
