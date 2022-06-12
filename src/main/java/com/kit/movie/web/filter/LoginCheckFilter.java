@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Slf4j
-public class LoginCheckFilter implements Filter {
+public class    LoginCheckFilter implements Filter {
 
     private static final String[] whitelist={"/", "/members/new","/login","/logout","/css/*"};
     @Override

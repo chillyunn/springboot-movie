@@ -3,6 +3,7 @@ package com.kit.movie.web.config;
 import com.kit.movie.web.filter.LogFilter;
 import com.kit.movie.web.filter.LoginCheckFilter;
 import com.kit.movie.web.interceptor.LogInterceptor;
+import com.kit.movie.web.interceptor.LoginCheckInterceptor;
 import lombok.extern.java.Log;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -31,10 +32,10 @@ public class WebConfig implements WebMvcConfigurer{
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**","/",".ico","error","/error-page/**");
-//        registry.addInterceptor(new LoginCheckInterceptor())
-//                .order(2)
-//                .addPathPatterns("/**")
-//                .excludePathPatterns("/","/members/new","/login","/logout","/css/**","/*.ico","error");
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .order(2)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/","/users/join","/user/login","/user/logout","/css/**","/*.ico","error");
     }
 
     @Bean
