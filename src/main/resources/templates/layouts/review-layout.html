@@ -8,9 +8,10 @@
 <section layout:fragment="content">
     <p>Page content goes here</p>
 </section>
-<section layout:fragment="reviews">
-    <p>review content</p>
-</section>
+<header th:replace="fragments/reviews :: reviewsFragment"></header>
+<!--<section layout:fragment="reviews">-->
+<!--    <p>review content</p>-->
+<!--</section>-->
 <header th:replace="fragments/footer :: footerFragment"></header>
 </body>
 </html>
