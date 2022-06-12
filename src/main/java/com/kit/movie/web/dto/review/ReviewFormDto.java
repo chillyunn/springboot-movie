@@ -21,16 +21,17 @@ public class ReviewFormDto {
     private Long userId, movieId;
     private String contents;
     private Boolean grade; //좋아요
+    private String postDate;
 
-    public ReviewFormDto(Review review){
+    public ReviewFormDto(Review review) {
         this.userId = review.getUserId();
         this.movieId = review.getMovieId();
         this.contents = review.getContents();
         this.grade = review.getGrade();
-
+        postDate = LocalDate.now().toString();
     }
 
-    public Review toEntity(Movie movie, User user){
+    public Review toEntity(Movie movie, User user) {
         return Review.builder()
                 .user(user)
                 .movie(movie)
