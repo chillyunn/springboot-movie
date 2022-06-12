@@ -17,18 +17,22 @@ public class MovieService {
     private final MovieRepository movieRepository;
 
     @Transactional
-    public Long save(MovieSaveRequestDto requestDto){
+    public Long save(MovieSaveRequestDto requestDto) {
         return movieRepository.save(requestDto.toEntity()).getMovieId();
     }
 
+    @Transactional
     public List<Movie> findAll() {
         return movieRepository.findAll();
     }
-    public Page<Movie> findAll(Pageable pageable){
+
+    @Transactional
+    public Page<Movie> findAll(Pageable pageable) {
         return movieRepository.findAll(pageable);
     }
 
+    @Transactional
     public Movie findById(Long id) {
-        return movieRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재하지 않는 Movie"));
+        return movieRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 Movie"));
     }
 }
