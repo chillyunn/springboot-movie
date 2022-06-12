@@ -3,7 +3,6 @@ package com.kit.movie.web.dto;
 import com.kit.movie.domain.movie.Movie;
 import com.kit.movie.domain.review.Review;
 import com.kit.movie.domain.user.User;
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,14 +15,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ReviewForm {
+public class ReviewFormDto {
     private User user;
     private Movie movie;
     private Long userId, movieId;
     private String contents;
     private Boolean grade; //좋아요
 
-    public ReviewForm(Review review){
+    public ReviewFormDto(Review review){
         this.userId = review.getUserId();
         this.movieId = review.getMovieId();
         this.contents = review.getContents();

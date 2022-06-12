@@ -7,7 +7,7 @@ import com.kit.movie.domain.review.ReviewRepository;
 import com.kit.movie.domain.review.SpringDataReviewRepository;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.domain.user.UserRepository;
-import com.kit.movie.web.dto.ReviewForm;
+import com.kit.movie.web.dto.ReviewFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class ReviewService {
     private final UserRepository userRepository;
     private final MovieRepository movieRepository;
 
-    public void saveReview(ReviewForm review, Long id) {
+    public void saveReview(ReviewFormDto review, Long id) {
         Movie movie = movieRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재x movie"));
         User user = userRepository.findById(review.getUserId()).orElseThrow(()-> new IllegalArgumentException("존재x user"));
 

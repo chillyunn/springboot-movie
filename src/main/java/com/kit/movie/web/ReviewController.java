@@ -2,12 +2,10 @@ package com.kit.movie.web;
 
 import com.kit.movie.domain.review.Review;
 import com.kit.movie.service.ReviewService;
-import com.kit.movie.web.dto.ReviewForm;
+import com.kit.movie.web.dto.ReviewFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,13 +55,13 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}/add")
     public String saveForm(Model model, @PathVariable Long id) {
-        model.addAttribute("review", new ReviewForm());
+        model.addAttribute("review", new ReviewFormDto());
         return "reviews/review-form";
     }
 
     @PostMapping("/reviews/{id}/add")
-    public String save(@ModelAttribute ReviewForm reviewForm, @PathVariable Long id){
-        reviewService.saveReview(reviewForm, id);
+    public String save(@ModelAttribute ReviewFormDto reviewFormDto, @PathVariable Long id){
+        reviewService.saveReview(reviewFormDto, id);
         return "redirect:/movies/detail?movieId=" + id;
     }
 
