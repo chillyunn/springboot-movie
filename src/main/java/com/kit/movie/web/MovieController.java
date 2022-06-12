@@ -8,6 +8,9 @@ import com.kit.movie.web.dto.movie.MovieResponseDto;
 import com.kit.movie.web.dto.movie.MovieSaveRequestDto;
 import com.kit.movie.web.dto.review.ReviewResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +41,14 @@ public class MovieController {
                 .collect(Collectors.toList());
         model.addAttribute("movies", responseDtos);
 
+        return "movies/movie-list";
+    }
+    @GetMapping("/movies/reservatedOrder")
+    public String findAllOrderReservated(Model model){
+        Sort sort1 = Sort.by("reservated").descending();
+        PageRequest pageRequest = PageRequest.of(0,11,sort1);
+        Page<Movie> pageBy = movieService.findAll(pageRequest);
+        model.addAttribute("movies",pageBy);
         return "movies/movie-list";
     }
 

@@ -27,6 +27,8 @@ public class Movie {
     @Column(nullable = true)
     private Integer reservated;
 
+    @Column(nullable = true)
+    private Integer recommend;
     @Column(nullable = false)
     private Integer runtime;
 

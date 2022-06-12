@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class MovieResponseDto {
+    private Integer recommend;
     private Long movieId;
     private String name, director, genre;
     private Integer reservated;
@@ -21,6 +22,7 @@ public class MovieResponseDto {
         this.movieId = entity.getMovieId();
         this.name = entity.getName();
         this.reservated = entity.getReservated();
+        this.recommend = entity.getRecommend();
         this.releaseDate = entity.getReleaseDate();
         this.director = entity.getDirector();
         this.genre = entity.getGenre();
