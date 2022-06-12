@@ -40,9 +40,11 @@ public class UserController {
 
     @GetMapping("/")
     public String home(
-            @SessionAttribute(name=SessionConst.LOGIN_USER, required = false) User loginUser, Model model){
-        Pageable firstPage = PageRequest.of(0,3);
-        Page<Movie> movies = movieService.findAll(firstPage);
+            @SessionAttribute(name=SessionConst.LOGIN_USER, required = false) User loginUser,
+            Model model,
+            @RequestParam(value = "page",defaultValue = "0") int page){
+        Pageable selectedPage = PageRequest.of(page,3);
+        Page<Movie> movies = movieService.findAll(selectedPage);
         model.addAttribute("movies",movies);
         if(loginUser==null){
             return "index";
