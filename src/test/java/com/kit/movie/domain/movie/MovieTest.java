@@ -36,4 +36,11 @@ class MovieTest {
         Page<Movie> pageBy = movieRepository.findAll(pageRequest);
         pageBy.stream().forEach(m-> System.out.println("m.getName() = " + m.getName()));
     }
+
+//    @Test
+//    void 평점순_정렬_테스트(){
+//        Sort sort2 = Sort.by("")
+//    }
+
+
 }
