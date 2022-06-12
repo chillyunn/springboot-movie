@@ -16,6 +16,8 @@ public class TimetableSaveRequestDto {
     private Integer price;
     private Long screenId;
     private Long movieId;
+    private Integer percentDiscount;
+    private Integer flatDiscount;
 
     @Builder
     public TimetableSaveRequestDto(String time, Integer price) {

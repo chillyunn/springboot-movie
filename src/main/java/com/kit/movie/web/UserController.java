@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Time;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -115,22 +116,26 @@ public class UserController {
         }
         return "redirect:/";
     }
+    @GetMapping("/timetables/admin")
+    public String findAdminTimetable(Model model){
+        List<Timetable> timetables = timetableService.findAll();
+        model.addAttribute("timetables",timetables);
+        return "timetables/timetable-admin-list";
+    }
 
-    @GetMapping("/user/admin")
-    public String adminForm(Model model){
+    @GetMapping("/timetable/admin/{id}")
+    public String adminForm(@PathVariable("id") Long id, HttpSession session, Model model){
         //model.addAttribute("timetable",new TimetableSaveRequestDto());
 
+        Timetable timetable=timetableService.findById(id);
 
-        List<Timetable> timetables = timetableService.findAll();
-
-        List<TimetableResponseDto> responseDtos = timetables
-                .stream()
-                .map(t-> new TimetableResponseDto(t))
-                .collect(Collectors.toList());
-        model.addAttribute("timetables",responseDtos);
+        model.addAttribute("timetable",timetable);
 
         return "members/admin";
     }
-//    @PostMapping("/user/admin")
-//    public String admin()
+
+//    @PostMapping("/user/admin/{id}")
+//    public String adminPost(@ModelAttribute TimetableSaveRequestDto timetableSaveRequestDto){
+//        Timetable
+//    }
 }

@@ -25,7 +25,7 @@
 
                                     </ul>
                                 </div>
-                                <div th:onclick="'location.href=\''+@{/timetable/admin(id=${timetable.id})}+'\''" class="info-timetable">
+                                <div th:onclick="'location.href=\''+@{'/timetable/admin/'+${timetable.id}}+'\''" class="info-timetable">
                                     <ul>
                                         <li>
                                             <span th:text="${timetable.time}"></span><br>

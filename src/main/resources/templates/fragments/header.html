@@ -43,7 +43,7 @@
                     <li>
                         <div th:if="${user}">
                             <div th:if="${#strings.equals(user.getRole(),T(com.kit.movie.domain.user.Role).ADMIN)}">
-                                <a href="/user/admin">
+                                <a href="/timetables/admin">
                                    <span>관리자 페이지</span>
                                 </a>
                             </div>
