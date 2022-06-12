@@ -39,7 +39,7 @@
                             <div class="movie_info_wrap">
                                 <strong class="movieName" th:text="${movie.name}"></strong>
                                 <span></span>
-                                <span th:text="|예매율 ${movie.reservationRate}%|"></span>
+                                <span th:text="|예매율 ${movie.reservated}%|"></span>
                             </div>
                         </div>
                         <button id="pageBtn" type="button" th:onclick="getMovies()">다음 페이지</button>

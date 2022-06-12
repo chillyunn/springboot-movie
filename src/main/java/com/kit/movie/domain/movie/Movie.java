@@ -25,7 +25,7 @@ public class Movie {
     private Integer grade;
 
     @Column(nullable = true)
-    private Double reservationRate;
+    private Integer reservated;
 
     @Column(nullable = false)
     private Integer runtime;

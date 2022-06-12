@@ -11,7 +11,7 @@ import lombok.Setter;
 public class MovieResponseDto {
     private Long movieId;
     private String name, director, genre;
-    private Double reservationRate;
+    private Integer reservated;
     private String releaseDate;
     private String imgUrl;
     private Integer runtime,grade;
@@ -20,7 +20,7 @@ public class MovieResponseDto {
     public MovieResponseDto(Movie entity) {
         this.movieId = entity.getMovieId();
         this.name = entity.getName();
-        this.reservationRate = entity.getReservationRate();
+        this.reservated = entity.getReservated();
         this.releaseDate = entity.getReleaseDate();
         this.director = entity.getDirector();
         this.genre = entity.getGenre();
