@@ -24,16 +24,22 @@ public class ReviewService {
     private final MovieRepository movieRepository;
 
     public void saveReview(ReviewFormDto review, Long id) {
-        Movie movie = movieRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재x movie"));
+        Movie movie = movieRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재x movie"));
         System.out.println("review = " + review.toString() + ", id = " + id);
 
-        User user = userRepository.findById(review.getUserId()).orElseThrow(()-> new IllegalArgumentException("존재x user"));
+        User user = userRepository.findById(review.getUserId()).orElseThrow(() -> new IllegalArgumentException("존재x user"));
 
         reviewRepository.save(review.toEntity(movie, user));
 
     }
-    public List<Review> findReviews() { return reviewRepository.findAll(); }
-    public Review findOne(Long reviewId) { return reviewRepository.findOne(reviewId); }
+
+    public List<Review> findReviews() {
+        return reviewRepository.findAll();
+    }
+
+    public Review findOne(Long reviewId) {
+        return reviewRepository.findOne(reviewId);
+    }
 
     public List<Review> findByMovie(Movie movie) {
         return springDataReviewRepository.findByMovie(movie);
