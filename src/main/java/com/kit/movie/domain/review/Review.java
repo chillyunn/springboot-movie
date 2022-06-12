@@ -3,12 +3,14 @@ package com.kit.movie.domain.review;
 import com.kit.movie.domain.movie.Movie;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.Date;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class Review {

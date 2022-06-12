@@ -2,10 +2,7 @@ package com.kit.movie.domain.user;
 
 import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.review.Review;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "USERS")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +43,7 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
 //
 //
 //
