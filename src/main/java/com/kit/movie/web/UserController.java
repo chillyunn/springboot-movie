@@ -3,10 +3,7 @@ package com.kit.movie.web;
 import com.kit.movie.domain.user.Role;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.service.UserService;
-import com.kit.movie.web.dto.UserLoginRequestDto;
-import com.kit.movie.web.dto.UserLoginResponseDto;
-import com.kit.movie.web.dto.UserResponseDto;
-import com.kit.movie.web.dto.UserSaveRequestDto;
+import com.kit.movie.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -105,6 +102,7 @@ public class UserController {
 
     @GetMapping("/user/admin")
     public String adminForm(Model model){
+        model.addAttribute("timetable",new TimetableRequestDto());
         return "members/admin";
     }
 }

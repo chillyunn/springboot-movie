@@ -10,7 +10,16 @@
 <section layout:fragment="content" class="main-content">
 <!--        이부분 관리자 페이지로 고칠 부분-->
     <div id="container">
-
+        <h1>관리자 페이지</h1>
+        <form id="register-form" th:action="@{user/admin}" th:object="${timetable}" method="post">
+            <div class="form-row">
+                <input type="radio" name="chk_info" value="정률할인">정률 할인
+                <input type="radio" name="chk_info" value="정액할인">정액 할인
+            </div>
+            <div class="form-row" >
+                <label>할인: </label><input type="text" th:field="*{}"
+            </div>
+        </form>
     </div>
 <!--        ㅇㅇ-->
 
