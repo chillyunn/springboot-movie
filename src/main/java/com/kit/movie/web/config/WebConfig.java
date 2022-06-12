@@ -36,10 +36,10 @@ public class WebConfig implements WebMvcConfigurer{
                 .order(2)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/","/images/**","/user/login","/user/logout","/css/**","/*.ico","error"
-                ,"/movies/**", "/timetables/**");
+                ,"/users/join","/user/**");
     }
 
-    //@Bean
+    @Bean
     public FilterRegistrationBean logFilter(){
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LogFilter());
