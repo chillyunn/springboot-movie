@@ -28,5 +28,4 @@ public class MovieResponseDto {
         this.actor=entity.getActor();
         this.grade=entity.getGrade();
     }
-
 }
