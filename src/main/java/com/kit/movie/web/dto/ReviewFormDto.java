@@ -40,4 +40,16 @@ public class ReviewFormDto {
                 .build();
 
     }
+
+    @Override
+    public String toString() {
+        return "ReviewFormDto{" +
+                "user=" + user +
+                ", movie=" + movie +
+                ", userId=" + userId +
+                ", movieId=" + movieId +
+                ", contents='" + contents + '\'' +
+                ", grade=" + grade +
+                '}';
+    }
 }

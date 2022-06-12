@@ -14,10 +14,10 @@ import java.util.List;
 public class TimetableService {
     private final TimetableRepository timetableRepository;
 
-    @Transactional
-    public Long save(TimetableSaveRequestDto requestDto){
-        return timetableRepository.save(requestDto.toEntity()).getId();
-    }
+//    @Transactional
+//    public Long save(TimetableSaveRequestDto requestDto){
+//        return timetableRepository.save(requestDto.toEntity()).getId();
+//    }
 
     public List<Timetable> findAll() {
         return timetableRepository.findAll();
