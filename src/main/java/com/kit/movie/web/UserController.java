@@ -140,6 +140,6 @@ public class UserController {
         timetable.setPrice(timetable.getPrice()-timetableSaveRequestDto.getFlatDiscount());
 
         timetableService.save(timetable);
-        return "/";
+        return "redirect:/";
     }
 }
