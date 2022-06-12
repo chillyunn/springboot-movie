@@ -20,7 +20,7 @@
                         <div th:each="movie : ${movies}"
                              class="swiper-slide swiper-slide-movie swiper-slide-active movieList"
                              style="width: 170.4px; margin-right: 32px">
-                            <div class="img_wrap" id="image_mouse" data-scale="false" th:onmouseover="onmouseOver()">
+                            <div class="img_wrap" id="image_mouse" data-scale="false" >
                                 <img class="mouseOver" th:src="${movie.imgUrl}" th:alt="${movie.name}">
 
                             </div>
@@ -38,19 +38,23 @@
                             </div>
                             <div class="movie_info_wrap">
                                 <strong class="movieName" th:text="${movie.name}"></strong>
-                                <span></span>
+                                <span th:text="|평점 ${movie.recommend}%|"></span>
                                 <span th:text="|예매율 ${movie.reservated}%|"></span>
                             </div>
                         </div>
                         <button id="pageBtn" type="button" th:onclick="getMovies()">다음 페이지</button>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function getMovies() {
+            let URLSearch = new URLSearchParams(location.search).get('page');
+            console.log(++URLSearch);
+            location.href="http://localhost:8080/?page="+URLSearch;
+        }
+    </script>
 </section>
-
 </body>
-
 </html>

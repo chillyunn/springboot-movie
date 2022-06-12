@@ -51,6 +51,14 @@ public class MovieController {
         model.addAttribute("movies",pageBy);
         return "movies/movie-list";
     }
+    @GetMapping("/movies/recommendOrder")
+    public String findAllOrderRecommend(Model model){
+        Sort sort1 = Sort.by("recommend").descending();
+        PageRequest pageRequest = PageRequest.of(0,11,sort1);
+        Page<Movie> pageBy = movieService.findAll(pageRequest);
+        model.addAttribute("movies",pageBy);
+        return "movies/movie-list";
+    }
 
     @GetMapping("/movies/detail")
     public String findById(Model model, @RequestParam Long movieId) {

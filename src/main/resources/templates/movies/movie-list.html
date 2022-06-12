@@ -9,13 +9,11 @@
             <h3><span>무비차트</span></h3>
             <div class="contents">
                 <div class="sect-sorting">
-                    <select id="order_type" name="order-type">
-                        <option value="1">예매율순</option>
-                        <option value="2">평점순</option>
+                    <select id="order_type" name="order-type" onchange="getMovies()">
+                        <option value="" selected disabled hidden>선택하세요</option>
+                        <option value="reservatedOrder">예매율순</option>
+                        <option value="recommendOrder">평점순</option>
                     </select>
-                    <button type="button" class="round gray">
-                        <span>GO</span>
-                    </button>
                 </div>
                 <div class="totalSearch_wrap">
                     <label>
@@ -43,6 +41,7 @@
                             </a>
                             <div class="score">
                                 <strong class="percent">
+                                    <span th:text="|평점 ${movie.recommend}%|"></span>
                                     <span th:text="|예매율 ${movie.reservated}%|"></span>
                                 </strong>
                             </div>
@@ -60,6 +59,12 @@
             </div>
         </div>
     </div>
+    <script>
+        function getMovies() {
+            var value=document.getElementById('order_type').options[order_type.selectedIndex].value;
+            location.href = "http://localhost:8080/movies/"+value;
+        }
+    </script>
 </section>
 </body>
 </html>
