@@ -93,4 +93,18 @@ public class UserController {
         session.setAttribute(SessionConst.LOGIN_USER, loginUser);
         return "redirect:"+redirectURL;
     }
+
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/user/admin")
+    public String adminForm(Model model){
+        return "members/admin";
+    }
 }
