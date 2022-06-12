@@ -56,6 +56,7 @@ public class ReviewController {
     @GetMapping("/reviews/{id}/add")
     public String saveForm(Model model, @PathVariable Long id) {
         model.addAttribute("review", new ReviewFormDto());
+        model.addAttribute("movieId", id);
         return "reviews/review-form";
     }
 

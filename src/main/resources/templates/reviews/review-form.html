@@ -15,7 +15,7 @@
                 <div th:if="${user}">
                     <h4 th:text="|로그인:${user.userId}|">로그인 사용자 Id</h4>
                 </div>
-                <form id="register-form" th:action="@{/reviews/new}" th:object="${review}" method="post">
+                <form id="register-form" th:action="@{'/reviews/'+${movieId}+'/add'}" th:object="${review}" method="post">
 
                     <div class="form-row">
                         <label>리뷰: </label><input type="text" th:field="*{contents}" autofocus="autofocus"
