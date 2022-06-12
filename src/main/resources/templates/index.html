@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <body>
 <section layout:fragment="content" class="main-content">
@@ -17,10 +18,25 @@
                      id="movieChart_list" style="display: block">
                     <div class="swiper-wrapper" style="transform: translate3d(0px,0px,0px);">
 
-                        <div th:each="movie : ${movies}" id="movieList"class="swiper-slide swiper-slide-movie swiper-slide-active"
+                        <div th:each="movie : ${movies}" id="movieList"
+                             class="swiper-slide swiper-slide-movie swiper-slide-active"
                              style="width: 170.4px; margin-right: 32px">
-                            <div class="img_wrap" data-scale="false">
-                                <img th:src="${movie.imgUrl}" th:alt="${movie.name}">
+                            <div class="img_wrap" id="image_mouse" data-scale="false" th:onmouseover="onmouseOver()">
+                                <img class="mouseOver" th:src="${movie.imgUrl}" th:alt="${movie.name}"
+                                     th:onmouseover="onmouseOver()">
+
+                            </div>
+                            <div class="mouseoverClass">
+                                <a th:href="@{/movies/detail(movieId=${movie.movieId})}">
+                                    <span>
+                                        상세보기
+                                    </span>
+                                </a>
+                                <a th:href="@{/ticket/(movieId=${movie.movieId})}">
+                                    <span>
+                                        예매하기
+                                    </span>
+                                </a>
                             </div>
                             <div class="movie_info_wrap">
                                 <strong class="movieName" th:text="${movie.name}"></strong>
@@ -35,18 +51,26 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function getMovies() {
+            $.ajax({
+               type: "POST",
+                url: "/",
+                dataType: "text"
+            })
+            .done(function (result){
+                $("#movieList").replaceWith(result);
+            })
+        }
+
+        function onmouseOver(){
+            var mouseover=document.getElementById('image_mouse').nextElementSibling;
+            mouseover.style.display = "block";
+        }
+
+    </script>
 </section>
+
 </body>
-<script type="text/javascript">
-    function getMovies() {
-        $.ajax({
-            type: "POST",
-            url: "/",
-            dataType: "text"
-        })
-        .done(function (result){
-            $("#movieList").replaceWith(result);
-        })
-    }
-</script>
+
 </html>

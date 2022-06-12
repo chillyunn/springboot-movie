@@ -566,3 +566,7 @@ div[class^="sect-"] {
     position: relative;
     padding-left: 16px;
 }
+
+.mouseoverClass{
+    display: none;
+}
