@@ -8,7 +8,6 @@ import com.kit.movie.domain.review.SpringDataReviewRepository;
 import com.kit.movie.domain.user.User;
 import com.kit.movie.domain.user.UserRepository;
 import com.kit.movie.web.dto.ReviewForm;
-import com.kit.movie.web.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

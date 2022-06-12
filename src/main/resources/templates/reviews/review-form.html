@@ -10,8 +10,7 @@
 <section layout:fragment="content" class="main-content">
     <h1>리뷰 등록</h1>
     <div th:if="${user}">
-        <h4 th:text="|로그인:${user.userId}|">로그인 사용자 이름</h4>
-        <a href="/logout">LOGOUT</a>
+        <h4 th:text="|로그인:${user.userId}|">로그인 사용자 Id</h4>
     </div>
     <form id="register-form" th:action="@{/reviews/new}" th:object="${reviewForm}" method="post">
         <div th:if="${#fields.hasGlobalErrors()}">
