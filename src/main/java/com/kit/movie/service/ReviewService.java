@@ -25,6 +25,8 @@ public class ReviewService {
 
     public void saveReview(ReviewFormDto review, Long id) {
         Movie movie = movieRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("존재x movie"));
+        System.out.println("review = " + review.toString() + ", id = " + id);
+
         User user = userRepository.findById(review.getUserId()).orElseThrow(()-> new IllegalArgumentException("존재x user"));
 
         reviewRepository.save(review.toEntity(movie, user));
