@@ -572,5 +572,21 @@ div[class^="sect-"] {
 }
 .swiper-slide .mouseoverClass {
     display: none;
-
+}
+.info-timetable{
+    width: 130px;
+    border: 1px solid black;
+}
+.info-timetable ul{
+    padding: 0;
+    text-align: center;
+}
+#timetable{
+    border-top: 3px solid black;
+    padding-top: 25px;
+    border-bottom: 3px solid black;
+    padding-bottom: 25px;
+}
+.info-hall ul {
+    padding: 0;
 }

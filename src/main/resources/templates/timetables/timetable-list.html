@@ -9,25 +9,27 @@
         <div id="contents">
             <div class="contents main-contents">
                 <h3><span>상영시간표</span></h3>
-                <ul>
+                <ul id="timetable">
                     <li th:each="timetable:${timetables}">
                         <div class="col-times">
-                            <div th:href="@{/ticket/(id=${timetable.id})}" class="info-movie">
-                                <a th:text="${timetable.movie.name}"></a>
+                            <div  class="info-movie">
+                                <span th:text="${timetable.movie.grade}"></span>
+                                <a th:href="@{/movies/detail(movieId=${timetable.movie.movieId})}" th:text="${timetable.movie.name}"></a>
                                 <i th:text="${timetable.movie.genre}"></i>
                                 <i th:text="|${timetable.movie.releaseDate} 개봉|"> </i>
                             </div>
                             <div class="type-hall">
                                 <div class="info-hall">
                                     <ul>
-                                        <li th:text="|${timetable.screen.name} ${timetable.screen.floor} 층|"></li>
-                                        <li>총 124석</li>
+                                        <li th:text="| ${timetable.screen.type} ${timetable.screen.name}관 ${timetable.screen.floor} 층|"></li>
+
                                     </ul>
                                 </div>
-                                <div class="info-timetable">
+                                <div th:onclick="'location.href=\''+@{/ticket(id=${timetable.id})}+'\''" class="info-timetable">
                                     <ul>
                                         <li>
-                                            <em th:text="${timetable.time}"></em>
+                                            <span th:text="${timetable.time}"></span><br>
+                                            <span>총 124석</span><br>
                                             <span>마감</span>
                                         </li>
                                     </ul>

@@ -27,7 +27,6 @@ public class MovieSaveRequestDto {
         this.actor=actor;
     }
 
-    @Builder
     public Movie toEntity(){
         return Movie.builder()
                 .name(name)

@@ -36,9 +36,6 @@ public class Screen {
     private String theaterName;
 
     @OneToMany(mappedBy = "screen",cascade = CascadeType.ALL)
-    List<Reservation> reservations = new ArrayList<>();
-
-    @OneToMany(mappedBy = "screen",cascade = CascadeType.ALL)
     List<Timetable> timetables = new ArrayList<>();
 
     @Builder

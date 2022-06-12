@@ -33,7 +33,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "userResv")
+    @OneToMany(mappedBy = "user")
     List<Reservation> reservations = new ArrayList<>();
 
     @Builder

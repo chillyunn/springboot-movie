@@ -1,6 +1,7 @@
 package com.kit.movie.domain.timetable;
 
 import com.kit.movie.domain.movie.Movie;
+import com.kit.movie.domain.reservation.Reservation;
 import com.kit.movie.domain.screen.Screen;
 import com.kit.movie.domain.seat.Seat;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Null;
@@ -29,7 +31,7 @@ public class Timetable {
     @Column(nullable = false)
     private Integer price;
 
-    @Range(min=0, max=100)
+    @Range(min = 0, max = 100)
     private Integer percentDiscount;
 
     @Min(5000)
@@ -43,14 +45,11 @@ public class Timetable {
     @JoinColumn(name = "MOVIE_ID")
     private Movie movie;
 
-    @OneToMany(mappedBy = "timetable",cascade = CascadeType.ALL)
-    private List<Seat> seats= new ArrayList<>();
+    @OneToMany(mappedBy = "timetable", cascade = CascadeType.ALL)
+    private List<Seat> seats = new ArrayList<>();
 
-
-    @Transient
-    private Long screenId;
-    @Transient
-    private Long movieId;
+    @OneToMany(mappedBy = "timetable", cascade = CascadeType.ALL)
+    private List<Reservation> reservations = new ArrayList<>();
 
     @Builder
     public Timetable(String time, Integer price, Screen screen, Movie movie) {
@@ -60,4 +59,9 @@ public class Timetable {
         this.movie = movie;
     }
 
+
+    @Transient
+    private Long screenId;
+    @Transient
+    private Long movieId;
 }
