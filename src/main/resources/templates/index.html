@@ -17,6 +17,7 @@
                 <div class="wiper movieChart_list swiper-container-initialized swiper-container-horizontal"
                      id="movieChart_list" style="display: block">
                     <div class="swiper-wrapper" style="transform: translate3d(0px,0px,0px);">
+                        <button id="prepageBtn" type="button" th:onclick="getPreMovies()">이전 페이지</button>
                         <div th:each="movie : ${movies}"
                              class="swiper-slide swiper-slide-movie swiper-slide-active movieList"
                              style="width: 170.4px; margin-right: 32px">
@@ -49,6 +50,11 @@
         </div>
     </div>
     <script>
+        function getPreMovies() {
+            let URLSearch = new URLSearchParams(location.search).get('page');
+            console.log(--URLSearch);
+            location.href="http://localhost:8080/?page="+URLSearch;
+        }
         function getMovies() {
             let URLSearch = new URLSearchParams(location.search).get('page');
             console.log(++URLSearch);
