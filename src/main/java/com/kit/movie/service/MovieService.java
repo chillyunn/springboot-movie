@@ -1,6 +1,7 @@
 package com.kit.movie.service;
 
 import com.kit.movie.domain.movie.Movie;
+import com.kit.movie.domain.movie.MovieCustomRepository;
 import com.kit.movie.domain.movie.MovieRepository;
 import com.kit.movie.web.dto.movie.MovieSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
+    private final MovieCustomRepository movieCustomRepository;
 
     @Transactional
     public Long save(MovieSaveRequestDto requestDto) {
@@ -34,5 +36,9 @@ public class MovieService {
     @Transactional
     public Movie findById(Long id) {
         return movieRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 Movie"));
+    }
+
+    public List<Movie> findAllDynamic(String query) {
+        return movieCustomRepository.findMovieWithNameActor(query);
     }
 }

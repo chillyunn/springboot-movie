@@ -16,12 +16,8 @@
                     </select>
                 </div>
                 <div class="totalSearch_wrap">
-                    <label>
                         <input type="text" id="header_keyword">
-
-                    </label>
-                    <button type="button" class="btn_totalSearch" id="btn_header_search">검색
-                    </button>
+                        <button type="submit" class="btn_totalSearch" id="btn_header_search" th:onclick="getDynamic()">검색</button>
                 </div>
             </div>
             <div class="sect-movie-chart">
@@ -63,6 +59,10 @@
         function getMovies() {
             var value=document.getElementById('order_type').options[order_type.selectedIndex].value;
             location.href = "http://localhost:8080/movies/"+value;
+        }
+        function getDynamic(){
+            var value=document.getElementById('header_keyword').value;
+            location.href = "http://localhost:8080/movies/dynamic?query="+value;
         }
     </script>
 </section>

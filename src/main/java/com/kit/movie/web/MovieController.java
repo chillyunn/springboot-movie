@@ -59,6 +59,14 @@ public class MovieController {
         model.addAttribute("movies",pageBy);
         return "movies/movie-list";
     }
+    @GetMapping("/movies/dynamic")
+    public String findAllDynamic(Model model,
+                                 @RequestParam("query") String query){
+        System.out.println(query);
+        List<Movie> movies = movieService.findAllDynamic(query);
+        model.addAttribute("movies",movies);
+        return "movies/movie-list";
+    }
 
     @GetMapping("/movies/detail")
     public String findById(Model model, @RequestParam Long movieId) {
