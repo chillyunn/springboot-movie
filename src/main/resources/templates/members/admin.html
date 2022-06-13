@@ -16,8 +16,15 @@
                 <input type="radio" name="chk_info" value="정률할인" onclick="hide('flat')">정률 할인
                 <input type="radio" name="chk_info" value="정액할인" onclick="hide('percent')">정액 할인
             </div>
+            <div th:if="${#fields.hasGlobalErrors()}">
+                <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
+            </div>
             <div id="percent" class="form-row" >
-                <label>정률할인: </label><input type="text" th:field="*{percentDiscount}" placeholder="정률할인"/>
+                <label>정률할인: </label><input type="text" th:field="*{percentDiscount}" placeholder="정률할인"
+                                                        th:errorclass="field-error"/>
+                <div class="field-error" th:if="${#fields.hasErrors('percentDiscount')}" th:errors="*{percentDiscount}">
+                    정률할인 오류
+                </div>
             </div>
             <div id="flat"  class="form-row">
                 <label>정액할인: </label><input type="text" th:field="*{flatDiscount}" placeholder="정액할인"/>

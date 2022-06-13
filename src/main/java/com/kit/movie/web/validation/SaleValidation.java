@@ -1,10 +1,12 @@
 package com.kit.movie.web.validation;
 
 import com.kit.movie.domain.timetable.Timetable;
+import com.kit.movie.web.dto.timetable.TimetableSaveRequestDto;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-
+@Component
 public class SaleValidation implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {

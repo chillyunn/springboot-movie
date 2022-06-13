@@ -11,15 +11,20 @@ import com.kit.movie.web.dto.timetable.TimetableResponseDto;
 import com.kit.movie.web.dto.timetable.TimetableSaveRequestDto;
 import com.kit.movie.web.dto.user.UserLoginRequestDto;
 import com.kit.movie.web.dto.user.UserSaveRequestDto;
+import com.kit.movie.web.validation.SaleValidation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.ObjectUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,6 +32,7 @@ import java.sql.Time;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class UserController {
@@ -34,6 +40,8 @@ public class UserController {
     private final MovieService movieService;
     private final TimetableService timetableService;
 
+    //private final Validator validator;
+    private final SaleValidation validation;
 //    @GetMapping("/user/{id}")
 //    public UserResponseDto findById(@PathVariable Long id){
 //        return userService.findById(id);
@@ -135,17 +143,31 @@ public class UserController {
     }
 
     @PostMapping("/timetable/admin/{id}")
-    public String adminPost(@PathVariable("id") Long id, @ModelAttribute TimetableSaveRequestDto timetableSaveRequestDto){
-        Timetable timetable=timetableService.findById(id);
-        if(timetableSaveRequestDto.getFlatDiscount()==null){
-            timetable.setPercentDiscount(timetableSaveRequestDto.getPercentDiscount());
-            timetable.setPrice(timetable.getPrice()/100*timetableSaveRequestDto.getPercentDiscount());
+    public String adminPost(@Validated @PathVariable("id") Long id, @ModelAttribute Timetable timetable, BindingResult bindingResult){
+        //validate(timetable,bindingResult);
+
+        if (timetable.getPercentDiscount() == null || timetable.getPercentDiscount() < 0 || timetable.getPercentDiscount() > 100) {
+            bindingResult.addError(new FieldError("timetable","percentDiscount","에러뜸"));
+        }
+        if (timetable.getFlatDiscount()== null || timetable.getFlatDiscount()<5000) {
+            bindingResult.addError(new FieldError("timetable","flatDiscount","에러뜸2"));
+
+        }
+        if(bindingResult.hasErrors()){
+            System.out.println("에러 안");
+            log.info("errors={} ",bindingResult);
+            return "timetables/admin";
+        }
+        Timetable timetable1=timetableService.findById(id);
+        if(timetable.getFlatDiscount()==null){
+            timetable1.setPercentDiscount(timetable.getPercentDiscount());
+            timetable1.setPrice(timetable1.getPrice()/100*timetable.getPercentDiscount());
         }
         else{
-            timetable.setFlatDiscount(timetableSaveRequestDto.getFlatDiscount());
-            timetable.setPrice(timetable.getPrice()-timetableSaveRequestDto.getFlatDiscount());
+            timetable1.setFlatDiscount(timetable.getFlatDiscount());
+            timetable1.setPrice(timetable1.getPrice()-timetable.getFlatDiscount());
         }
-        timetableService.save(timetable);
+        timetableService.save(timetable1);
         return "redirect:/";
     }
 }
