@@ -1,5 +1,6 @@
 package com.kit.movie.domain.movie;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
@@ -21,9 +22,23 @@ public class MovieCustomRepository {
 
         return queryFactory
                 .selectFrom(movie)
-                .where(titleContains(query),
-                    actorContains(query)
+                .where(movie.name.contains(query)
+//                        ,movie.actor.contains(query)
+//                    ,actorContains(query)
                 )
+                .fetch();
+
+    }
+
+    public List<Movie> findMovieBySearch(String title) {
+        BooleanBuilder builder = new BooleanBuilder();
+
+            builder.and(QMovie.movie.name.contains(title));
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+
+        return queryFactory.selectFrom(QMovie.movie)
+                .where(builder)
                 .fetch();
     }
 

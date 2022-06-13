@@ -1,7 +1,7 @@
 buildscript {
-    dependencies {
-        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
-    }
+	dependencies {
+		classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
+	}
 }
 
 plugins {
@@ -9,7 +9,6 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
-	//id "io.franzbecker.gradle-lombok" version "3.0.0"
 }
 
 group = 'com'
@@ -41,31 +40,31 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    //querydsl 추가
-    implementation 'com.querydsl:querydsl-jpa'
-    //querydsl 추가
-    implementation 'com.querydsl:querydsl-apt'
+	//querydsl 추가
+	implementation 'com.querydsl:querydsl-jpa'
+	//querydsl 추가
+	implementation 'com.querydsl:querydsl-apt'
 
 }
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
-    library = "com.querydsl:querydsl-apt"
-    jpa = true
-    querydslSourcesDir = querydslDir
+	library = "com.querydsl:querydsl-apt"
+	jpa = true
+	querydslSourcesDir = querydslDir
 }
 sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java', querydslDir]
-        }
-    }
+	main {
+		java {
+			srcDirs = ['src/main/java', querydslDir]
+		}
+	}
 }
 compileQuerydsl{
-    options.annotationProcessorPath = configurations.querydsl
+	options.annotationProcessorPath = configurations.querydsl
 }
 configurations {
-    querydsl.extendsFrom compileClasspath
+	querydsl.extendsFrom compileClasspath
 }
 
 tasks.named('test') {
