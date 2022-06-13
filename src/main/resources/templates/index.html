@@ -13,6 +13,9 @@
                             <span class="active" id="btnMovie">무비차트</span>
                         </h3>
                     </div>
+                    <div>
+                        <h4><a href="/movies">전체보기</a></h4>
+                    </div>
                 </div>
                 <div class="wiper movieChart_list swiper-container-initialized swiper-container-horizontal"
                      id="movieChart_list" style="display: block">
@@ -21,7 +24,7 @@
                         <div th:each="movie : ${movies}"
                              class="swiper-slide swiper-slide-movie swiper-slide-active movieList"
                              style="width: 170.4px; margin-right: 32px">
-                            <div class="img_wrap" id="image_mouse" data-scale="false" >
+                            <div class="img_wrap" id="image_mouse" data-scale="false">
                                 <img class="mouseOver" th:src="${movie.imgUrl}" th:alt="${movie.name}">
 
                             </div>
@@ -52,13 +55,22 @@
     <script>
         function getPreMovies() {
             let URLSearch = new URLSearchParams(location.search).get('page');
-            console.log(--URLSearch);
-            location.href="http://localhost:8080/?page="+URLSearch;
+            if (URLSearch == 0) {
+                location.href = "http://localhost:8080/?page=2"
+            } else {
+                console.log(--URLSearch);
+                location.href = "http://localhost:8080/?page=" + URLSearch;
+            }
         }
+
         function getMovies() {
             let URLSearch = new URLSearchParams(location.search).get('page');
-            console.log(++URLSearch);
-            location.href="http://localhost:8080/?page="+URLSearch;
+            if (URLSearch == 2) {
+                location.href = "http://localhost:8080/?page=0"
+            } else {
+                console.log(++URLSearch);
+                location.href = "http://localhost:8080/?page=" + URLSearch;
+            }
         }
     </script>
 </section>
