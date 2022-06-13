@@ -29,6 +29,20 @@ public class MovieCustomRepository {
                 .fetch();
 
     }
+    public List<Movie> findMovieWithActor(String query){
+        QMovie movie = QMovie.movie;
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+
+        return queryFactory
+                .selectFrom(movie)
+                .where(movie.actor.contains(query)
+//                        ,movie.actor.contains(query)
+//                    ,actorContains(query)
+                )
+                .fetch();
+
+    }
 
     public List<Movie> findMovieBySearch(String title) {
         BooleanBuilder builder = new BooleanBuilder();

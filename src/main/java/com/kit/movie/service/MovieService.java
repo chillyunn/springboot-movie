@@ -39,6 +39,11 @@ public class MovieService {
     }
 
     public List<Movie> findAllDynamic(String query) {
-        return movieCustomRepository.findMovieWithNameActor(query);
+        if (movieCustomRepository.findMovieWithNameActor(query).toString().equals("[]")) {
+            return movieCustomRepository.findMovieWithActor(query);
+//            System.out.println("movieCustomRepository.findMovieWithNameActor(query) =" + movieCustomRepository.findMovieWithNameActor(query).toString());
+
+        }
+        else return movieCustomRepository.findMovieWithNameActor(query);
     }
 }
